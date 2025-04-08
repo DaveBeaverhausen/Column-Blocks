@@ -12,16 +12,21 @@ public class Bloque : MonoBehaviour
 
     void Update()
     {
-        // Si el bloque está demasiado inclinado, termina el juego
-        if (Mathf.Abs(transform.rotation.z) > inclinacionMaxima)
+        float rotZ = transform.eulerAngles.z;
+        float inclinacion = Mathf.Abs(NormalizarAngulo(rotZ));
+
+        if (inclinacion > inclinacionMaxima)
         {
-            GameOver();
+            FindObjectOfType<GameController>().GameOver();
         }
     }
 
-    void GameOver()
+    float NormalizarAngulo(float angulo)
     {
-        Debug.Log("¡Game Over!");
-        Time.timeScale = 0; // Pausa el juego
+        // Convierte 0–360 a -180 a 180
+        if (angulo > 180)
+            angulo -= 360;
+        return angulo;
     }
+
 }

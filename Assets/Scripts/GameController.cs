@@ -33,7 +33,9 @@ public class GameController : MonoBehaviour
     void SoltarBloque()
     {
         bloqueActual.transform.parent = null; // Lo soltamos del gancho
-        bloqueActual.GetComponent<Rigidbody2D>().simulated = true; // Activamos física para que caiga
+        Rigidbody2D rb =bloqueActual.GetComponent<Rigidbody2D>(); // Activamos física para que caiga
+        rb.simulated = true;
+        rb.linearVelocity = Vector2.zero;
         bloqueActual = null;
 
         // Creamos otro bloque luego de una pequeña pausa
