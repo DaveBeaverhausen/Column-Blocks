@@ -8,6 +8,11 @@ public class GameController : MonoBehaviour
     public Transform puntoCreacionBloque; // Transform vacío donde se instancia el bloque
     public GameObject gameOverPanel; // Panel de Game Over
 
+    public Gancho ganchoScript;           // Referencia al script del gancho
+    public float incrementoVelocidad = 0.5f;
+    public float velocidadMaxima = 10f;
+
+
     private GameObject bloqueActual; // Referencia al bloque actual
     public CameraFollow cameraFollow;
 
@@ -47,7 +52,11 @@ public class GameController : MonoBehaviour
             cameraFollow.SetUltimoBloque(bloqueActual.transform);
         }
 
-
+        // Aumentar velocidad del gancho
+        if (ganchoScript != null)
+        {
+            ganchoScript.velocidad = Mathf.Min(ganchoScript.velocidad + incrementoVelocidad, velocidadMaxima);
+        }
 
         bloqueActual = null;
 
