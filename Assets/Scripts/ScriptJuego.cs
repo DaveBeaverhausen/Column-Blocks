@@ -31,6 +31,7 @@ public class ScriptJuego : MonoBehaviour
             tiempoTotal = 0;
             juegoActivo = false;
             Debug.Log("Juego terminado");
+            SceneManager.LoadScene("NextGame");
         }
 
         MostrarTiempo(tiempoTotal);
@@ -39,14 +40,14 @@ public class ScriptJuego : MonoBehaviour
     IEnumerator GenerarObjetos()
     {
         float intervaloInicial = 2f; // Intervalo inicial entre objetos
-        float intervaloMinimo = 0.5f; // Intervalo mínimo entre objetos
-        float reduccionIntervalo = 0.01f; // Reducción del intervalo por cada objeto generado
+        float intervaloMinimo = 0.5f; // Intervalo mï¿½nimo entre objetos
+        float reduccionIntervalo = 0.01f; // Reducciï¿½n del intervalo por cada objeto generado
 
         while (juegoActivo)
         {
             int indice = Random.Range(0, objetosPrefab.Length);
 
-            // Generar posición X dentro de los límites establecidos
+            // Generar posiciï¿½n X dentro de los lï¿½mites establecidos
             float posicionX = Random.Range(limiteIzquierdo, limiteDerecho);
             Vector3 posicion = new Vector3(posicionX, 10f, 0f);
 
@@ -59,7 +60,7 @@ public class ScriptJuego : MonoBehaviour
             // Esperar antes de generar el siguiente objeto
             yield return new WaitForSeconds(intervaloInicial);
 
-            // Reducir gradualmente el intervalo hasta alcanzar el mínimo
+            // Reducir gradualmente el intervalo hasta alcanzar el mï¿½nimo
             intervaloInicial = Mathf.Max(intervaloInicial - reduccionIntervalo, intervaloMinimo);
         }
     }
