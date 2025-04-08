@@ -43,30 +43,26 @@ public class FruitNinjaVR : MonoBehaviour
         }
     }
 
-    void SpawnFruit()
+void SpawnFruit()
+{
+    if (!gameActive) return;
+
+    // Generar posición aleatoria para la fruta en el eje X
+    float randomX = Random.Range(-spawnRangeX, spawnRangeX);
+    Vector3 spawnPosition = new Vector3(randomX, spawnHeight, 0f); // Genera la fruta arriba
+
+    // Instanciar la fruta
+    GameObject newFruit = Instantiate(fruitPrefab, spawnPosition, Quaternion.identity);
+
+    // Configurar el Rigidbody de la fruta para que caiga con la gravedad 3D
+    Rigidbody rb = newFruit.GetComponent<Rigidbody>();
+    if (rb == null)
     {
-        if (!gameActive) return;
-
-        // Generar posición aleatoria para la fruta en el eje X
-        float randomX = Random.Range(-spawnRangeX, spawnRangeX);
-        Vector3 spawnPosition = new Vector3(randomX, spawnHeight, 0f); // Genera la fruta arriba
-
-        // Instanciar la fruta
-        GameObject newFruit = Instantiate(fruitPrefab, spawnPosition, Quaternion.identity);
-
-        // Configurar el Rigidbody2D de la fruta para que caiga
-        Rigidbody2D rb = newFruit.GetComponent<Rigidbody2D>();
-        if (rb == null)
-        {
-            rb = newFruit.AddComponent<Rigidbody2D>();  // Si no tiene Rigidbody2D, lo añadimos
-        }
-        rb.gravityScale = 1f; // Habilitar la gravedad 2D
-
-        // Asegurarse de que el script de la fruta esté asignado
-        Fruit fruitScript = newFruit.GetComponent<Fruit>();
-        if (fruitScript == null)
-        {
-            fruitScript = newFruit.AddComponent<Fruit>();
-        }
+        rb = newFruit.AddComponent<Rigidbody>();  // Si no tiene Rigidbody, lo añadimos
     }
+    rb.useGravity = true; // Habilitar la gravedad 3D
+}
+
+
+
 }

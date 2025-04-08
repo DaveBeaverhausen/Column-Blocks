@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Fruit : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
-        // Si el objeto que toca la fruta tiene el tag "Controller", la fruta se destruye
+        // Verificar si el objeto que colisiona con la fruta es un controlador de VR
         if (other.CompareTag("Controller"))
         {
-            // Aquí podrías agregar efectos visuales y de sonido para el corte
-            Destroy(gameObject);  // Destruir la fruta
+            // Aquí podrías agregar efectos visuales o de sonido para el corte
+            Destroy(gameObject);  // Destruir la fruta al cortarla
         }
     }
 }
