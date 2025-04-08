@@ -4,7 +4,11 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
+<<<<<<< HEAD
   productGUID: 34d32e40c3f57d14c8e3e06d3080413e
+=======
+  productGUID: 56d4e492272fde44ca7dbac2d1d22215
+>>>>>>> 6a470cc6612f9c8f0c168dd99da820ef7b1a3ae0
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +17,11 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
+<<<<<<< HEAD
   productName: Lluvia_Objetos
+=======
+  productName: My project (1)
+>>>>>>> 6a470cc6612f9c8f0c168dd99da820ef7b1a3ae0
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -287,6 +295,7 @@ PlayerSettings:
   AndroidReportGooglePlayAppDependencies: 1
   androidSymbolsSizeThreshold: 800
   m_BuildTargetIcons: []
+<<<<<<< HEAD
   m_BuildTargetPlatformIcons:
   - m_BuildTarget: Android
     m_Icons:
@@ -380,6 +389,9 @@ PlayerSettings:
       m_Height: 36
       m_Kind: 0
       m_SubKind: 
+=======
+  m_BuildTargetPlatformIcons: []
+>>>>>>> 6a470cc6612f9c8f0c168dd99da820ef7b1a3ae0
   m_BuildTargetBatching: []
   m_BuildTargetShaderSettings: []
   m_BuildTargetGraphicsJobs: []
@@ -400,10 +412,14 @@ PlayerSettings:
   m_BuildTargetGroupLightmapSettings: []
   m_BuildTargetGroupLoadStoreDebugModeSettings: []
   m_BuildTargetNormalMapEncoding: []
+<<<<<<< HEAD
   m_BuildTargetDefaultTextureCompressionFormat:
   - serializedVersion: 3
     m_BuildTarget: Android
     m_Formats: 01000000
+=======
+  m_BuildTargetDefaultTextureCompressionFormat: []
+>>>>>>> 6a470cc6612f9c8f0c168dd99da820ef7b1a3ae0
   playModeTestRunnerEnabled: 0
   runPlayModeTestAsEditModeTest: 0
   actionOnDotNetUnhandledException: 1
@@ -690,14 +706,22 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
+<<<<<<< HEAD
   metroPackageName: Lluvia_Objetos
+=======
+  metroPackageName: My project (1)
+>>>>>>> 6a470cc6612f9c8f0c168dd99da820ef7b1a3ae0
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
+<<<<<<< HEAD
   metroApplicationDescription: Lluvia_Objetos
+=======
+  metroApplicationDescription: My project (1)
+>>>>>>> 6a470cc6612f9c8f0c168dd99da820ef7b1a3ae0
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -768,11 +792,19 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
+<<<<<<< HEAD
   cloudProjectId: 
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: 
   organizationId: 
+=======
+  cloudProjectId: dc8c8134-c0b5-4868-94a1-8334c1329fe5
+  framebufferDepthMemorylessMode: 0
+  qualitySettingsNames: []
+  projectName: My project (1)
+  organizationId: davebeaverhausen
+>>>>>>> 6a470cc6612f9c8f0c168dd99da820ef7b1a3ae0
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

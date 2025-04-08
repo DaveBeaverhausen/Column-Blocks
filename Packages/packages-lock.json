@@ -121,6 +121,7 @@
       },
       "url": "https://packages.unity.com"
     },
+<<<<<<< HEAD
     "com.unity.device-simulator.devices": {
       "version": "1.0.0",
       "depth": 0,
@@ -128,6 +129,8 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> 6a470cc6612f9c8f0c168dd99da820ef7b1a3ae0
     "com.unity.ext.nunit": {
       "version": "2.0.5",
       "depth": 1,
