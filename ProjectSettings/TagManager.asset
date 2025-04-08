@@ -2,14 +2,8 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-<<<<<<< HEAD
   serializedVersion: 3
-  tags:
-  - ZonaEsquivar
-=======
-  serializedVersion: 2
   tags: []
->>>>>>> 6a470cc6612f9c8f0c168dd99da820ef7b1a3ae0
   layers:
   - Default
   - TransparentFX
@@ -47,8 +41,5 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-<<<<<<< HEAD
   m_RenderingLayers:
   - Default
-=======
->>>>>>> 6a470cc6612f9c8f0c168dd99da820ef7b1a3ae0

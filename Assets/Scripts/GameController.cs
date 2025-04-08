@@ -1,25 +1,4 @@
 using UnityEngine;
-<<<<<<< HEAD
-
-public class GameController : MonoBehaviour
-{
-    public GameObject bloquePrefab;
-    public Transform posicionGancho;
-
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0)) // Detecta tap o clic
-        {
-            SoltarBloque();
-        }
-    }
-
-    void SoltarBloque()
-    {
-        Instantiate(bloquePrefab, posicionGancho.position, Quaternion.identity);
-    }
-}
-=======
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
@@ -101,4 +80,4 @@ public class GameController : MonoBehaviour
         Debug.Log("Salir del juego");
     }
 }
->>>>>>> 6a470cc6612f9c8f0c168dd99da820ef7b1a3ae0
+
