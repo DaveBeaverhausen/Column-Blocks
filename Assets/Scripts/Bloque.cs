@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class Bloque : MonoBehaviour
 {
+    public GameController gameController;
+
+    private bool haColisionado = false;
     private Rigidbody2D rb;
     private float inclinacionMaxima = 30f;
+    private float posicionMinimaY = -6f;
 
     void Start()
     {
@@ -15,18 +19,29 @@ public class Bloque : MonoBehaviour
         float rotZ = transform.eulerAngles.z;
         float inclinacion = Mathf.Abs(NormalizarAngulo(rotZ));
 
-        if (inclinacion > inclinacionMaxima)
+        if (inclinacion > inclinacionMaxima || transform.position.y < posicionMinimaY)
         {
-            FindObjectOfType<GameController>().GameOver();
+            if (gameController != null)
+                gameController.GameOver();
         }
     }
 
     float NormalizarAngulo(float angulo)
     {
-        // Convierte 0–360 a -180 a 180
-        if (angulo > 180)
-            angulo -= 360;
-        return angulo;
+        return angulo > 180 ? angulo - 360 : angulo;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!haColisionado && (collision.collider.CompareTag("Plataforma") || collision.collider.CompareTag("Bloque")))
+        {
+            haColisionado = true;
+
+            if (gameController != null)
+            {
+                gameController.SumarPunto(); 
+            }
+        }
     }
 
 }
