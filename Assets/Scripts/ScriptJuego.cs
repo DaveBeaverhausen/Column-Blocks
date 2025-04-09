@@ -9,6 +9,7 @@ public class ScriptJuego : MonoBehaviour
     public float tiempoTotal = 60f;
     public TextMeshProUGUI textoTiempo;
     public Marcador marcador;
+    public string nextSceneName = "SampleScene"; // Nombre de la siguiente escena, configurable en el Inspector
 
     private float velocidadCaida = 2f;
     private bool juegoActivo = true;
@@ -32,7 +33,7 @@ public class ScriptJuego : MonoBehaviour
             tiempoTotal = 0;
             juegoActivo = false;
             Debug.Log("Juego terminado");
-            SceneManager.LoadScene("NextGame");
+            SceneManager.LoadScene(nextSceneName); // Usar la variable configurable
         }
 
         MostrarTiempo(tiempoTotal);
@@ -41,14 +42,14 @@ public class ScriptJuego : MonoBehaviour
     IEnumerator GenerarObjetos()
     {
         float intervaloInicial = 2f; // Intervalo inicial entre objetos
-        float intervaloMinimo = 0.5f; // Intervalo m�nimo entre objetos
-        float reduccionIntervalo = 0.01f; // Reducci�n del intervalo por cada objeto generado
+        float intervaloMinimo = 0.5f; // Intervalo mínimo entre objetos
+        float reduccionIntervalo = 0.01f; // Reducción del intervalo por cada objeto generado
 
         while (juegoActivo)
         {
             int indice = Random.Range(0, objetosPrefab.Length);
 
-            // Generar posici�n X dentro de los l�mites establecidos
+            // Generar posición X dentro de los límites establecidos
             float posicionX = Random.Range(limiteIzquierdo, limiteDerecho);
             Vector3 posicion = new Vector3(posicionX, 10f, 0f);
 
@@ -61,7 +62,7 @@ public class ScriptJuego : MonoBehaviour
             // Esperar antes de generar el siguiente objeto
             yield return new WaitForSeconds(intervaloInicial);
 
-            // Reducir gradualmente el intervalo hasta alcanzar el m�nimo
+            // Reducir gradualmente el intervalo hasta alcanzar el mínimo
             intervaloInicial = Mathf.Max(intervaloInicial - reduccionIntervalo, intervaloMinimo);
         }
     }
@@ -70,6 +71,6 @@ public class ScriptJuego : MonoBehaviour
     {
         int minutos = Mathf.FloorToInt(tiempo / 60);
         int segundos = Mathf.FloorToInt(tiempo % 60);
-        textoTiempo.text = $"{minutos:00}:{segundos:00}";
+        textoTiempo.text = $"Tiempo {minutos:00}:{segundos:00}";
     }
 }

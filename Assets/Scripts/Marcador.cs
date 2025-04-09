@@ -7,7 +7,7 @@ public class Marcador : MonoBehaviour
     public int score;
     public TextMeshProUGUI textoMarcador;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         score = 0;
@@ -28,6 +28,6 @@ public class Marcador : MonoBehaviour
 
     private void ActualizarTexto()
     {
-        textoMarcador.text = score.ToString(); // Actualiza el texto con la puntuación actual
+        textoMarcador.text = score.ToString(); 
     }
 }
