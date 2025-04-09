@@ -4,7 +4,7 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform ultimoBloque;  // Torre
     public float smoothSpeed = 2f;
-    public float verticalOffset = 4f; // Espacio visual para ver el gancho
+    public float verticalOffset = 6f; // Espacio visual para ver el gancho
 
     private float minY;
 
