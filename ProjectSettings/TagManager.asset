@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Bloque
+  - Plataforma
   layers:
   - Default
   - TransparentFX
@@ -40,6 +42,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3705954703
+    locked: 0
+  - name: GamePlay
+    uniqueID: 3492318431
     locked: 0
   m_RenderingLayers:
   - Default
