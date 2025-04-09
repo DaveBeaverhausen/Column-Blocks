@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -15,9 +15,10 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI textoTiempo;
 
     [Header("Control")]
-    public float tiempoRestante = 90f; // 1:30
+    public float tiempoRestante = 90f;
     private int puntuacion = 0;
     private bool juegoTerminado = false;
+    private bool bloqueEsperandoAsentarse = false; // 🆕 flag
 
     public CameraFollow cameraFollow;
     public Gancho ganchoScript;
@@ -37,13 +38,11 @@ public class GameController : MonoBehaviour
     {
         if (juegoTerminado) return;
 
-        // Input para soltar
-        if (Input.GetMouseButtonDown(0) && bloqueActual != null)
+        if (Input.GetMouseButtonDown(0) && bloqueActual != null && !bloqueEsperandoAsentarse)
         {
             SoltarBloque();
         }
 
-        // Temporizador
         tiempoRestante -= Time.deltaTime;
         if (tiempoRestante <= 0)
         {
@@ -74,6 +73,8 @@ public class GameController : MonoBehaviour
         bloqueActual.GetComponent<Rigidbody2D>().simulated = false;
 
         bloqueActual.GetComponent<Bloque>().gameController = this;
+
+        bloqueEsperandoAsentarse = false; // Por si viene de GameOver en pausa
     }
 
     void SoltarBloque()
@@ -89,20 +90,28 @@ public class GameController : MonoBehaviour
         if (ganchoScript != null)
             ganchoScript.velocidad = Mathf.Min(ganchoScript.velocidad + incrementoVelocidad, velocidadMaxima);
 
+        bloqueEsperandoAsentarse = true; // no se puede lanzar hasta que avise
         bloqueActual = null;
+    }
 
+    public void BloqueAsentado()
+    {
+        if (juegoTerminado) return;
+
+        bloqueEsperandoAsentarse = false;
         Invoke(nameof(CrearNuevoBloque), 0.5f);
     }
 
     public void GameOver()
     {
+        juegoTerminado = true;
         gameOverPanel.SetActive(true);
-        Time.timeScale = 0; // pausa el juego
+        Time.timeScale = 0;
     }
-
 
     public void Reintentar()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -117,5 +126,4 @@ public class GameController : MonoBehaviour
         puntuacion++;
         ActualizarUI();
     }
-
 }
