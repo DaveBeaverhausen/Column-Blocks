@@ -56,9 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-<<<<<<< HEAD
+    "Column-Blocks.sln=======dotnet.defaultSolution": "My project (1).sln>>>>>>>6a470cc6612f9c8f0c168dd99da820ef7b1a3ae0",
     "dotnet.defaultSolution": "Column-Blocks.sln"
-=======
-    "dotnet.defaultSolution": "My project (1).sln"
->>>>>>> 6a470cc6612f9c8f0c168dd99da820ef7b1a3ae0
 }

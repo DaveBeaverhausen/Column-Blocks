@@ -12,20 +12,6 @@ public class Bloque : MonoBehaviour
 
     void Update()
     {
-<<<<<<< HEAD
-        // Si el bloque está demasiado inclinado, termina el juego
-        if (Mathf.Abs(transform.rotation.z) > inclinacionMaxima)
-        {
-            GameOver();
-        }
-    }
-
-    void GameOver()
-    {
-        Debug.Log("¡Game Over! Torre colapsada.");
-        Time.timeScale = 0; // Pausa el juego
-    }
-=======
         float rotZ = transform.eulerAngles.z;
         float inclinacion = Mathf.Abs(NormalizarAngulo(rotZ));
 
@@ -43,5 +29,4 @@ public class Bloque : MonoBehaviour
         return angulo;
     }
 
->>>>>>> 6a470cc6612f9c8f0c168dd99da820ef7b1a3ae0
 }
