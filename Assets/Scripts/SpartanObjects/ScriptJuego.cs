@@ -15,11 +15,14 @@ public class ScriptJuego : MonoBehaviour
     public Marcador marcador;
     public string nextSceneName = "PreColumns"; 
     public GameObject gameOverPanel;
+    public AudioClip sonidoGameOver;
+    public TextMeshProUGUI textoMarca;
 
     private float velocidadCaida = 2f;
     private bool juegoActivo = true;
     private float limiteIzquierdo = -2.4f;
     private float limiteDerecho = 2.4f;
+    private AudioSource audioSource;
 
     private void Start()
     {
@@ -32,6 +35,7 @@ public class ScriptJuego : MonoBehaviour
 
         StartCoroutine(GenerarObjetos());
         gameOverPanel.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -45,18 +49,24 @@ public class ScriptJuego : MonoBehaviour
         {
             tiempoTotal = 0;
             juegoActivo = false;
-            gameOverPanel.SetActive(true);
-            Debug.Log("Juego terminado");
 
-            // Guardar la puntuación acumulada antes de cambiar de escena
-            if (marcador != null)
+            // Obtener puntuación y guardar
+            int puntosActuales = marcador.ObtenerPuntuacion();
+            PlayerPrefs.SetInt("Puntos_Prueba2", puntosActuales);
+            PlayerPrefs.Save();
+
+            if (textoMarca != null)
             {
-                int puntosActuales = marcador.ObtenerPuntuacion();
-                PlayerPrefs.SetInt("PuntosAcumulados", puntosActuales);
-                PlayerPrefs.Save(); // Asegurarse de que se guarde
+                textoMarca.text = "Marca: " + puntosActuales;
             }
 
-            SceneManager.LoadScene(nextSceneName); 
+            gameOverPanel.SetActive(true);
+
+            if (sonidoGameOver != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(sonidoGameOver);
+            }
+
         }
 
         MostrarTiempo(tiempoTotal);
@@ -96,4 +106,10 @@ public class ScriptJuego : MonoBehaviour
         int segundos = Mathf.FloorToInt(tiempo % 60);
         textoTiempo.text = $"Time {minutos:00}:{segundos:00}";
     }
+
+    public void IrASiguientePantalla()
+    {
+        SceneManager.LoadScene(nextSceneName);
+    }
+
 }

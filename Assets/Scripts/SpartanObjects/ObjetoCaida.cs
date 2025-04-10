@@ -34,6 +34,11 @@ public class ObjetoCaida : MonoBehaviour
         {
             marcador.DecrementarPuntuacion(1); // Resta 1 punto
             contabilizado = true;
+            AudioSource audio = collision.gameObject.GetComponent<AudioSource>();
+            if (audio != null)
+            {
+                audio.Play();
+            }
             Destroy(gameObject);
         }
     }

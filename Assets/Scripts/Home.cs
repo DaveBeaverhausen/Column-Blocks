@@ -1,17 +1,21 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro; // Necesario para usar TextMeshPro
+using TMPro;
 
 public class HomeController : MonoBehaviour
 {
-    public int puntos = 0; // Variable para almacenar los puntos, inicializada en 0
-    public TextMeshProUGUI puntosText; // Referencia al texto que mostrará los puntos
+    public TextMeshProUGUI puntosText; // Texto donde se mostrarán los resultados
 
     void Start()
     {
-        // Asegurarse de que los puntos empiecen en 0
-        puntos = 0;
-        ActualizarTextoPuntos(); // Mostrar los puntos iniciales en el texto
+        int puntos1 = PlayerPrefs.GetInt("Puntos_Prueba1", 0);
+        int puntos2 = PlayerPrefs.GetInt("Puntos_Prueba2", 0);
+        int total = puntos1 + puntos2;
+
+        if (puntosText != null)
+        {
+            puntosText.text = $"Prueba I: {puntos1}\nPrueba II: {puntos2}\nTotal: {total}";
+        }
     }
 
     public void GoToNextScene()
@@ -19,14 +23,10 @@ public class HomeController : MonoBehaviour
         SceneManager.LoadScene("Objects");
     }
 
-    // Método para actualizar el texto de los puntos
-    private void ActualizarTextoPuntos()
+    public void ReiniciarPuntos()
     {
-        if (puntosText != null)
-        {
-            puntosText.text = "Last Score: " + puntos.ToString();
-        }
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Recargar pantalla
     }
-
-   
 }

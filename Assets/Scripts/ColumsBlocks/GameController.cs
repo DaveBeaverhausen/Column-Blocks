@@ -13,12 +13,15 @@ public class GameController : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI textoPuntuacion;
     public TextMeshProUGUI textoTiempo;
+    public AudioClip sonidoGameOver;
+    private AudioSource audioSource;
+    public TextMeshProUGUI textoMarca;
 
     [Header("Control")]
     public float tiempoRestante = 90f;
     private int puntuacion = 0;
     private bool juegoTerminado = false;
-    private bool bloqueEsperandoAsentarse = false; // 🆕 flag
+    private bool bloqueEsperandoAsentarse = false; // flag
 
     [Header("Transición al finalizar el tiempo")]
     public string nextSceneName = "ErrorVR"; // Nombre de la escena a la que cambiar cuando se acabe el tiempo
@@ -38,6 +41,8 @@ public class GameController : MonoBehaviour
         gameOverPanel.SetActive(false);
         ActualizarUI();
         CrearNuevoBloque();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -111,7 +116,19 @@ public class GameController : MonoBehaviour
     public void GameOver()
     {
         juegoTerminado = true;
+
+        PlayerPrefs.SetInt("Puntos_Prueba1", puntuacion); // Guardar puntuación de esta prueba
+        PlayerPrefs.Save();
+
+        if (textoMarca != null)
+        {
+            textoMarca.text = "Marca: " + puntuacion;
+        }
+
         gameOverPanel.SetActive(true);
+
+        audioSource.PlayOneShot(sonidoGameOver);
+
         Time.timeScale = 0;
     }
 
