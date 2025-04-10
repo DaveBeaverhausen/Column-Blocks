@@ -1,3 +1,7 @@
+/*
+**Usamos la clase Playerprefs que nos permite guardar y recuperar datos.
+**De esta manera, podemos acumular la puntuación pantalla a pantalla.
+*/
 using UnityEngine;
 using System.Collections;
 using TMPro;
@@ -19,9 +23,15 @@ public class ScriptJuego : MonoBehaviour
 
     private void Start()
     {
+        // Cargar los puntos acumulados al inicio (si los hay)
+        if (marcador != null)
+        {
+            int puntosAcumulados = PlayerPrefs.GetInt("PuntosAcumulados", 0); // 0 es el valor por defecto si no existe
+            marcador.EstablecerPuntuacion(puntosAcumulados);
+        }
+
         StartCoroutine(GenerarObjetos());
         gameOverPanel.SetActive(false);
-
     }
 
     private void Update()
@@ -37,7 +47,16 @@ public class ScriptJuego : MonoBehaviour
             juegoActivo = false;
             gameOverPanel.SetActive(true);
             Debug.Log("Juego terminado");
-            SceneManager.LoadScene(nextSceneName); // Usar la variable configurable
+
+            // Guardar la puntuación acumulada antes de cambiar de escena
+            if (marcador != null)
+            {
+                int puntosActuales = marcador.ObtenerPuntuacion();
+                PlayerPrefs.SetInt("PuntosAcumulados", puntosActuales);
+                PlayerPrefs.Save(); // Asegurarse de que se guarde
+            }
+
+            SceneManager.LoadScene(nextSceneName); 
         }
 
         MostrarTiempo(tiempoTotal);

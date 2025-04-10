@@ -32,6 +32,9 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        // Cargar los puntos acumulados al inicio
+        puntuacion = PlayerPrefs.GetInt("PuntosAcumulados", 0); // 0 es el valor por defecto si no existe
+
         gameOverPanel.SetActive(false);
         ActualizarUI();
         CrearNuevoBloque();
@@ -130,10 +133,14 @@ public class GameController : MonoBehaviour
         ActualizarUI();
     }
 
-    
     private void ChangeSceneOnTimeEnd()
     {
-        juegoTerminado = true; 
+        juegoTerminado = true;
+
+        
+        PlayerPrefs.SetInt("PuntosAcumulados", puntuacion);
+        PlayerPrefs.Save(); 
+
         SceneManager.LoadScene(nextSceneName); // Cambiar a la escena especificada
     }
 }
