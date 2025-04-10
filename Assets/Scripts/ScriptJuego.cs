@@ -10,6 +10,7 @@ public class ScriptJuego : MonoBehaviour
     public TextMeshProUGUI textoTiempo;
     public Marcador marcador;
     public string nextSceneName = "SampleScene"; // Nombre de la siguiente escena, configurable en el Inspector
+    public GameObject gameOverPanel;
 
     private float velocidadCaida = 2f;
     private bool juegoActivo = true;
@@ -19,6 +20,8 @@ public class ScriptJuego : MonoBehaviour
     private void Start()
     {
         StartCoroutine(GenerarObjetos());
+        gameOverPanel.SetActive(false);
+
     }
 
     private void Update()
@@ -32,6 +35,7 @@ public class ScriptJuego : MonoBehaviour
         {
             tiempoTotal = 0;
             juegoActivo = false;
+            gameOverPanel.SetActive(true);
             Debug.Log("Juego terminado");
             SceneManager.LoadScene(nextSceneName); // Usar la variable configurable
         }
@@ -71,6 +75,6 @@ public class ScriptJuego : MonoBehaviour
     {
         int minutos = Mathf.FloorToInt(tiempo / 60);
         int segundos = Mathf.FloorToInt(tiempo % 60);
-        textoTiempo.text = $"Tiempo {minutos:00}:{segundos:00}";
+        textoTiempo.text = $"Time {minutos:00}:{segundos:00}";
     }
 }
