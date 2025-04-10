@@ -1384,7 +1384,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 5, z: 1}
-  m_LocalScale: {x: 0.6668489, y: 0.9785, z: 0}
+  m_LocalScale: {x: 0.6668489, y: 0.9785, z: -1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 949703825}
@@ -1528,7 +1528,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Siguiente
+  m_text: Next
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f2dc26ae755da1641bd08747f4292720, type: 2}
   m_sharedMaterial: {fileID: 6005500248079933236, guid: f2dc26ae755da1641bd08747f4292720, type: 2}
@@ -2130,11 +2130,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3975838676848842463, guid: ec6972c4606a91b468026a9d124b4174, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 3975838676848842463, guid: ec6972c4606a91b468026a9d124b4174, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 2.03
       objectReference: {fileID: 0}
     - target: {fileID: 3975838676848842463, guid: ec6972c4606a91b468026a9d124b4174, type: 3}
       propertyPath: m_LocalPosition.z
