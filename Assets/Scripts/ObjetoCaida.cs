@@ -3,7 +3,7 @@ using UnityEngine;
 public class ObjetoCaida : MonoBehaviour
 {
     public float velocidadBase = 2f;
-    public float multiplicadorValocidad = 1f;
+    public float multiplicadorValocidad = 2f;
     public Marcador marcador;
 
     private bool contabilizado = false;

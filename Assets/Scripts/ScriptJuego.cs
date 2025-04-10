@@ -26,7 +26,7 @@ public class ScriptJuego : MonoBehaviour
         if (!juegoActivo) return;
 
         tiempoTotal -= Time.deltaTime;
-        velocidadCaida += Time.deltaTime * 0.01f;
+        velocidadCaida += Time.deltaTime * 0.1f;
 
         if (tiempoTotal <= 0)
         {
@@ -43,7 +43,7 @@ public class ScriptJuego : MonoBehaviour
     {
         float intervaloInicial = 2f; // Intervalo inicial entre objetos
         float intervaloMinimo = 0.5f; // Intervalo mínimo entre objetos
-        float reduccionIntervalo = 0.01f; // Reducción del intervalo por cada objeto generado
+        float reduccionIntervalo = 0.1f; // Reducción del intervalo por cada objeto generado
 
         while (juegoActivo)
         {
