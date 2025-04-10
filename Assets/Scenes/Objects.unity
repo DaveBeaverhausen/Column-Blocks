@@ -1035,7 +1035,7 @@ MonoBehaviour:
   tiempoTotal: 60
   textoTiempo: {fileID: 1307922031}
   marcador: {fileID: 172084130}
-  nextSceneName: SampleScene
+  nextSceneName: PreColumns
   gameOverPanel: {fileID: 1174644588}
 --- !u!4 &1076728443
 Transform:

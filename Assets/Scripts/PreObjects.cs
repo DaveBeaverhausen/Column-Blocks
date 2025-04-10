@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections; 
 
-public class MenuController : MonoBehaviour
+public class PreObjects : MonoBehaviour
 {
-    public string nextSceneName = "Home";
-    public float waitTime = 7f;
+    private string nextSceneName = "Objects";
+    public float waitTime = 4f;
 
     void Start()
     {
@@ -18,7 +18,7 @@ public class MenuController : MonoBehaviour
         GoToNextScene();
     }
 
-    private void GoToNextScene()
+    public void GoToNextScene()
     {
         SceneManager.LoadScene(nextSceneName);
     }
