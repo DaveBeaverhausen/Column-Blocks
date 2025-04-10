@@ -23,6 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: bacaa469ac0613b419bcb0a70970f8ec
+  - enabled: 1
+    path: Assets/Scenes/ErrorVR.unity
+    guid: 870123fcbecbd3942ae78fbcdfb032a1
+  - enabled: 1
+    path: Assets/Scenes/ErrorAR.unity
+    guid: 37d1e3994e955134c93e996214f03426
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

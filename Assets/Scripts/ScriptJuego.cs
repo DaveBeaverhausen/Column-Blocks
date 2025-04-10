@@ -9,7 +9,7 @@ public class ScriptJuego : MonoBehaviour
     public float tiempoTotal = 60f;
     public TextMeshProUGUI textoTiempo;
     public Marcador marcador;
-    public string nextSceneName = "PreColumns"; // Nombre de la siguiente escena, configurable en el Inspector
+    public string nextSceneName = "PreColumns"; 
     public GameObject gameOverPanel;
 
     private float velocidadCaida = 2f;
