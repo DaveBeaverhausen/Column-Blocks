@@ -9,8 +9,26 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenu.unity
     guid: 3dc565a599d0845468e72f54bc6c4f18
   - enabled: 1
+    path: Assets/Scenes/Home.unity
+    guid: 7302035952799fd4e830d09c77b15613
+  - enabled: 1
+    path: Assets/Scenes/PreObjects.unity
+    guid: 1f7f50c36fb5d1e48bc566bd09b132c7
+  - enabled: 1
     path: Assets/Scenes/Objects.unity
     guid: da9e22bc30cb53d44a5399a99799e7a0
+  - enabled: 1
+    path: Assets/Scenes/PreColumns.unity
+    guid: b05973a88ca2ea948aeea2f6f8a46216
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: bacaa469ac0613b419bcb0a70970f8ec
+  - enabled: 1
+    path: Assets/Scenes/ErrorVR.unity
+    guid: 870123fcbecbd3942ae78fbcdfb032a1
+  - enabled: 1
+    path: Assets/Scenes/ErrorAR.unity
+    guid: 37d1e3994e955134c93e996214f03426
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

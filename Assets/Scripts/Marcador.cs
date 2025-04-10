@@ -7,7 +7,6 @@ public class Marcador : MonoBehaviour
     public int score;
     public TextMeshProUGUI textoMarcador;
 
-
     void Start()
     {
         score = 0;
@@ -17,15 +16,29 @@ public class Marcador : MonoBehaviour
     public void IncrementarPuntuacion(int puntos)
     {
         score += puntos;
-        textoMarcador.text = score.ToString();
+        ActualizarTexto();
     }
 
     public void DecrementarPuntuacion(int puntos)
     {
         score -= puntos;
-        textoMarcador.text = score.ToString();
+        ActualizarTexto();
     }
 
+    //Metodo para poder pasar la puntuacion de un juego a otro
+    public int ObtenerPuntuacion()
+    {
+        return score;
+    }
+
+    // Método para establecer la puntuación
+    public void EstablecerPuntuacion(int nuevaPuntuacion)
+    {
+        score = nuevaPuntuacion;
+        ActualizarTexto();
+    }
+
+    //Actualizar el marcador
     private void ActualizarTexto()
     {
         textoMarcador.text = score.ToString(); 

@@ -20,6 +20,9 @@ public class GameController : MonoBehaviour
     private bool juegoTerminado = false;
     private bool bloqueEsperandoAsentarse = false; // 🆕 flag
 
+    [Header("Transición al finalizar el tiempo")]
+    public string nextSceneName = "ErrorVR"; // Nombre de la escena a la que cambiar cuando se acabe el tiempo
+
     public CameraFollow cameraFollow;
     public Gancho ganchoScript;
     public float incrementoVelocidad = 0.5f;
@@ -29,6 +32,9 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        // Cargar los puntos acumulados al inicio
+        puntuacion = PlayerPrefs.GetInt("PuntosAcumulados", 0); // 0 es el valor por defecto si no existe
+
         gameOverPanel.SetActive(false);
         ActualizarUI();
         CrearNuevoBloque();
@@ -47,7 +53,7 @@ public class GameController : MonoBehaviour
         if (tiempoRestante <= 0)
         {
             tiempoRestante = 0;
-            GameOver();
+            ChangeSceneOnTimeEnd(); // Cambiar de escena cuando se acabe el tiempo
         }
 
         ActualizarUI();
@@ -126,5 +132,15 @@ public class GameController : MonoBehaviour
         puntuacion++;
         ActualizarUI();
     }
-}
 
+    private void ChangeSceneOnTimeEnd()
+    {
+        juegoTerminado = true;
+
+        
+        PlayerPrefs.SetInt("PuntosAcumulados", puntuacion);
+        PlayerPrefs.Save(); 
+
+        SceneManager.LoadScene(nextSceneName); // Cambiar a la escena especificada
+    }
+}
