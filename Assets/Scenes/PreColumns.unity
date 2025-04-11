@@ -153,8 +153,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: 44.5}
-  m_SizeDelta: {x: 1144.443, y: 89}
+  m_AnchoredPosition: {x: 31, y: -0.0024414}
+  m_SizeDelta: {x: 1247.498, y: 89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &293671975
 MonoBehaviour:
@@ -176,10 +176,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: COLUMN BLOCKS
+  m_text: 'PRUEBA II : HABILIDAD '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f2dc26ae755da1641bd08747f4292720, type: 2}
-  m_sharedMaterial: {fileID: 6005500248079933236, guid: f2dc26ae755da1641bd08747f4292720, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce86a2e788a9ae9418f0c4b6042053ff, type: 2}
+  m_sharedMaterial: {fileID: -3831542712007562248, guid: ce86a2e788a9ae9418f0c4b6042053ff, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

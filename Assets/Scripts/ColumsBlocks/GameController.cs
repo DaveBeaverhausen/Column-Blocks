@@ -36,7 +36,8 @@ public class GameController : MonoBehaviour
     void Start()
     {
         // Cargar los puntos acumulados al inicio
-        puntuacion = PlayerPrefs.GetInt("PuntosAcumulados", 0); // 0 es el valor por defecto si no existe
+        //puntuacion = PlayerPrefs.GetInt("PuntosAcumulados", 0); // 0 es el valor por defecto si no existe
+        puntuacion = 0;
 
         gameOverPanel.SetActive(false);
         ActualizarUI();
@@ -58,7 +59,7 @@ public class GameController : MonoBehaviour
         if (tiempoRestante <= 0)
         {
             tiempoRestante = 0;
-            ChangeSceneOnTimeEnd(); // Cambiar de escena cuando se acabe el tiempo
+            //ChangeSceneOnTimeEnd(); // Cambiar de escena cuando se acabe el tiempo
         }
 
         ActualizarUI();
@@ -67,13 +68,13 @@ public class GameController : MonoBehaviour
     void ActualizarUI()
     {
         if (textoPuntuacion != null)
-            textoPuntuacion.text = "SCORE\n" + puntuacion;
+            textoPuntuacion.text = "MARCA\n" + puntuacion;
 
         if (textoTiempo != null)
         {
             int minutos = Mathf.FloorToInt(tiempoRestante / 60f);
             int segundos = Mathf.FloorToInt(tiempoRestante % 60f);
-            textoTiempo.text = $"TIME\n{minutos:00}:{segundos:00}";
+            textoTiempo.text = $"TIEMPO\n{minutos:00}:{segundos:00}";
         }
     }
 
@@ -117,7 +118,7 @@ public class GameController : MonoBehaviour
     {
         juegoTerminado = true;
 
-        PlayerPrefs.SetInt("Puntos_Prueba1", puntuacion); // Guardar puntuación de esta prueba
+        PlayerPrefs.SetInt("Puntos_Prueba2", puntuacion); // Guardar puntuación de esta prueba
         PlayerPrefs.Save();
 
         if (textoMarca != null)
@@ -150,7 +151,7 @@ public class GameController : MonoBehaviour
         ActualizarUI();
     }
 
-    private void ChangeSceneOnTimeEnd()
+    /*private void ChangeSceneOnTimeEnd()
     {
         juegoTerminado = true;
 
@@ -159,5 +160,12 @@ public class GameController : MonoBehaviour
         PlayerPrefs.Save(); 
 
         SceneManager.LoadScene(nextSceneName); // Cambiar a la escena especificada
+    }*/
+
+    public void IrASiguienteEscena()
+    {
+        Time.timeScale = 1; // Por si está en pausa
+        SceneManager.LoadScene(nextSceneName);
     }
+
 }

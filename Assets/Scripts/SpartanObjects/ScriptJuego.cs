@@ -29,8 +29,10 @@ public class ScriptJuego : MonoBehaviour
         // Cargar los puntos acumulados al inicio (si los hay)
         if (marcador != null)
         {
-            int puntosAcumulados = PlayerPrefs.GetInt("PuntosAcumulados", 0); // 0 es el valor por defecto si no existe
-            marcador.EstablecerPuntuacion(puntosAcumulados);
+            //int puntosAcumulados = PlayerPrefs.GetInt("PuntosAcumulados", 0); // 0 es el valor por defecto si no existe
+            //marcador.EstablecerPuntuacion(puntosAcumulados);
+
+            marcador.EstablecerPuntuacion(0);
         }
 
         StartCoroutine(GenerarObjetos());
@@ -52,7 +54,7 @@ public class ScriptJuego : MonoBehaviour
 
             // Obtener puntuación y guardar
             int puntosActuales = marcador.ObtenerPuntuacion();
-            PlayerPrefs.SetInt("Puntos_Prueba2", puntosActuales);
+            PlayerPrefs.SetInt("Puntos_Prueba1", puntosActuales);
             PlayerPrefs.Save();
 
             if (textoMarca != null)
@@ -104,7 +106,7 @@ public class ScriptJuego : MonoBehaviour
     {
         int minutos = Mathf.FloorToInt(tiempo / 60);
         int segundos = Mathf.FloorToInt(tiempo % 60);
-        textoTiempo.text = $"Time {minutos:00}:{segundos:00}";
+        textoTiempo.text = $"TIEMPO {minutos:00}:{segundos:00}";
     }
 
     public void IrASiguientePantalla()
