@@ -13,8 +13,6 @@ public class GameController : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI textoPuntuacion;
     public TextMeshProUGUI textoTiempo;
-    public AudioClip sonidoGameOver;
-    private AudioSource audioSource;
     public TextMeshProUGUI textoMarca;
 
     [Header("Control")]
@@ -42,8 +40,6 @@ public class GameController : MonoBehaviour
         gameOverPanel.SetActive(false);
         ActualizarUI();
         CrearNuevoBloque();
-
-        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -116,6 +112,8 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
+        if (juegoTerminado) return; // ✅ Bloquea llamadas duplicadas
+
         juegoTerminado = true;
 
         PlayerPrefs.SetInt("Puntos_Prueba2", puntuacion); // Guardar puntuación de esta prueba
@@ -127,11 +125,10 @@ public class GameController : MonoBehaviour
         }
 
         gameOverPanel.SetActive(true);
-
-        audioSource.PlayOneShot(sonidoGameOver);
-
+        AudioManager.Instance.ReproducirSonidoGameOver();
         Time.timeScale = 0;
     }
+
 
     /*public void Reintentar()
     {
