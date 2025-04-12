@@ -26,12 +26,11 @@ public class ScriptJuego : MonoBehaviour
 
     private void Start()
     {
-        // Cargar los puntos acumulados al inicio (si los hay)
+        Time.timeScale = 1; // 🔧 Descongelar el juego por si venimos de una pausa
+
+        // tu código...
         if (marcador != null)
         {
-            //int puntosAcumulados = PlayerPrefs.GetInt("PuntosAcumulados", 0); // 0 es el valor por defecto si no existe
-            //marcador.EstablecerPuntuacion(puntosAcumulados);
-
             marcador.EstablecerPuntuacion(0);
         }
 
@@ -39,6 +38,7 @@ public class ScriptJuego : MonoBehaviour
         gameOverPanel.SetActive(false);
         audioSource = GetComponent<AudioSource>();
     }
+
 
     private void Update()
     {
@@ -111,7 +111,15 @@ public class ScriptJuego : MonoBehaviour
 
     public void IrASiguientePantalla()
     {
-        SceneManager.LoadScene(nextSceneName);
+        if (SceneLoader.Instance != null)
+        {
+            SceneLoader.Instance.LoadScene(nextSceneName);
+        }
+        else
+        {
+            Debug.LogError("❌ SceneLoader.Instance no encontrado.");
+        }
     }
+
 
 }

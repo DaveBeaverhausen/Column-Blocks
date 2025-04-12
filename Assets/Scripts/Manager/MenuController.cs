@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections; 
 
@@ -20,8 +20,15 @@ public class MenuController : MonoBehaviour
 
     private void GoToNextScene()
     {
-        SceneManager.LoadScene(nextSceneName);
+        if (SceneLoader.Instance == null)
+        {
+            Debug.LogError("❌ SceneLoader.Instance no encontrado. ¿Seguro que está en escena inicial?");
+            return;
+        }
+
+        SceneLoader.Instance.LoadScene(nextSceneName);
     }
+
 }
 
 /**

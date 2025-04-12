@@ -1,6 +1,5 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using System.Collections; 
+﻿using UnityEngine;
+using System.Collections;
 
 public class PreColumns : MonoBehaviour
 {
@@ -20,9 +19,17 @@ public class PreColumns : MonoBehaviour
 
     public void GoToNextScene()
     {
-        SceneManager.LoadScene(nextSceneName);
+        if (SceneLoader.Instance != null)
+        {
+            SceneLoader.Instance.LoadScene(nextSceneName);
+        }
+        else
+        {
+            Debug.LogError("❌ SceneLoader.Instance no encontrado.");
+        }
     }
 }
+
 
 /**
 *Usamos coroutine, que nos permite esperar el tiempo propuesto(7segundos) y cambiar de escena

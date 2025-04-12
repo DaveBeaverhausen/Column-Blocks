@@ -133,7 +133,7 @@ public class GameController : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public void Reintentar()
+    /*public void Reintentar()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -144,6 +144,7 @@ public class GameController : MonoBehaviour
         Application.Quit();
         Debug.Log("Salir del juego");
     }
+    */
 
     public void SumarPunto()
     {
@@ -164,8 +165,16 @@ public class GameController : MonoBehaviour
 
     public void IrASiguienteEscena()
     {
-        Time.timeScale = 1; // Por si está en pausa
-        SceneManager.LoadScene(nextSceneName);
+        Time.timeScale = 1;
+
+        if (SceneLoader.Instance != null)
+        {
+            SceneLoader.Instance.LoadScene(nextSceneName);
+        }
+        else
+        {
+            Debug.LogError("❌ SceneLoader.Instance no encontrado.");
+        }
     }
 
 }

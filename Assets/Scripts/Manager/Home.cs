@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class HomeController : MonoBehaviour
 {
@@ -20,13 +20,27 @@ public class HomeController : MonoBehaviour
 
     public void GoToNextScene()
     {
-        SceneManager.LoadScene("PreObjects");
+        if (SceneLoader.Instance == null)
+        {
+            Debug.LogError("❌ SceneLoader.Instance no encontrado.");
+            return;
+        }
+
+        SceneLoader.Instance.LoadScene("PreObjects");
     }
 
     public void ReiniciarPuntos()
     {
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Recargar pantalla
+
+        if (SceneLoader.Instance != null)
+        {
+            SceneLoader.Instance.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Fallback por si no está aún activo
+        }
     }
 }

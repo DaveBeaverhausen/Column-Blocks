@@ -1,5 +1,4 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class ErrorVR : MonoBehaviour
 {
@@ -7,7 +6,14 @@ public class ErrorVR : MonoBehaviour
 
     public void GoToNextScene()
     {
-        SceneManager.LoadScene(nextSceneName);
+        if (SceneLoader.Instance != null)
+        {
+            SceneLoader.Instance.LoadScene(nextSceneName);
+        }
+        else
+        {
+            Debug.LogError("❌ SceneLoader.Instance no encontrado.");
+        }
     }
 }
 

@@ -1,30 +1,32 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using System.Collections; 
+﻿using UnityEngine;
+using System.Collections;
 
 public class PreObjects : MonoBehaviour
 {
-    private string nextSceneName = "Objects";
-    public float waitTime = 4f;
+    [Header("Configuración")]
+    public float waitTime = 3f;                  // Tiempo de espera en segundos
+    public string nextScene = "Objects";         // Escena a la que transiciona
 
     void Start()
     {
-        StartCoroutine(ChangeSceneAfterDelay());
+        Time.timeScale = 1f; // Por si venimos de un juego pausado
+        Debug.Log("⏳ PreObjects: esperando " + waitTime + " segundos...");
+
+        StartCoroutine(CambiarDeEscenaConDelay());
     }
 
-    IEnumerator ChangeSceneAfterDelay()
+    IEnumerator CambiarDeEscenaConDelay()
     {
         yield return new WaitForSeconds(waitTime);
-        GoToNextScene();
-    }
 
-    public void GoToNextScene()
-    {
-        SceneManager.LoadScene(nextSceneName);
+        if (SceneLoader.Instance != null)
+        {
+            Debug.Log("🚀 Transición: cargando escena '" + nextScene + "'");
+            SceneLoader.Instance.LoadScene(nextScene);
+        }
+        else
+        {
+            Debug.LogError("❌ SceneLoader.Instance no encontrado.");
+        }
     }
 }
-
-/**
-*Usamos coroutine, que nos permite esperar el tiempo propuesto(7segundos) y cambiar de escena
-*Para usar la herramienta coroutine, usamos System.Collections
-**/

@@ -1,11 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections; 
 
 public class ErrorAR : MonoBehaviour
 {
     private string nextSceneName = "Home";
-    
+
     /*public float waitTime = 4f;
 
     void Start()
@@ -22,7 +22,14 @@ public class ErrorAR : MonoBehaviour
 
     public void GoToNextScene()
     {
-        SceneManager.LoadScene(nextSceneName);
+        if (SceneLoader.Instance != null)
+        {
+            SceneLoader.Instance.LoadScene(nextSceneName);
+        }
+        else
+        {
+            Debug.LogError("❌ SceneLoader.Instance no encontrado.");
+        }
     }
 }
 
