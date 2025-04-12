@@ -6,14 +6,29 @@ public class ObjetoCaida : MonoBehaviour
     public float multiplicadorValocidad = 2f;
     public Marcador marcador;
 
+    private ScriptJuego scriptJuego;
     private bool contabilizado = false;
+    private float limiteBordeInferior;
 
-    // Update is called once per frame
+    void Start()
+    {
+        // Buscar la referencia al controlador del juego
+        scriptJuego = FindObjectOfType<ScriptJuego>();
+
+        // Calcular el límite inferior basado en la cámara
+        Vector3 puntoInferior = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, -0.1f, 0));
+        limiteBordeInferior = puntoInferior.y;
+    }
+
     void Update()
     {
-        transform.Translate(Vector3.down * (velocidadBase *  multiplicadorValocidad) * Time.deltaTime);
+        // Solo mover si el juego está activo
+        if (scriptJuego == null || scriptJuego.juegoActivo)
+        {
+            transform.Translate(Vector3.down * (velocidadBase * multiplicadorValocidad) * Time.deltaTime);
+        }
 
-        if (transform.position.y < -10f) Destroy(gameObject);
+        if (transform.position.y < limiteBordeInferior) Destroy(gameObject);
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -43,3 +58,8 @@ public class ObjetoCaida : MonoBehaviour
         }
     }
 }
+
+/*
+**Usamos la clase Playerprefs que nos permite guardar y recuperar datos.
+**De esta manera, podemos acumular la puntuación pantalla a pantalla.
+*/

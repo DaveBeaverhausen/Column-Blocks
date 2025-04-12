@@ -1,7 +1,3 @@
-/*
-**Usamos la clase Playerprefs que nos permite guardar y recuperar datos.
-**De esta manera, podemos acumular la puntuación pantalla a pantalla.
-*/
 using UnityEngine;
 using System.Collections;
 using TMPro;
@@ -13,24 +9,35 @@ public class ScriptJuego : MonoBehaviour
     public float tiempoTotal = 60f;
     public TextMeshProUGUI textoTiempo;
     public Marcador marcador;
-    public string nextSceneName = "PreColumns"; 
+    public string nextSceneName = "PreColumns";
     public GameObject gameOverPanel;
     public AudioClip sonidoGameOver;
     public TextMeshProUGUI textoMarca;
 
     private float velocidadCaida = 2f;
-    private bool juegoActivo = true;
-    private float limiteIzquierdo = -2.4f;
-    private float limiteDerecho = 2.4f;
+    public bool juegoActivo = true;
+    private float limiteIzquierdo;
+    private float limiteDerecho;
     private AudioSource audioSource;
+
+    // Altura desde donde aparecen los objetos
+    private float alturaGeneracion = 10f;
+
+    // Margen para los bordes
+    [Range(0, 0.2f)]
+    public float margenPantalla = 0.05f;
 
     private void Start()
     {
-        Time.timeScale = 1; // 🔧 Descongelar el juego por si venimos de una pausa
+        // Calcular límites de pantalla para la generación de objetos
+        CalcularLimitesPantalla();
 
-        // tu código...
+        // Cargar los puntos acumulados al inicio (si los hay)
         if (marcador != null)
         {
+            //int puntosAcumulados = PlayerPrefs.GetInt("PuntosAcumulados", 0); // 0 es el valor por defecto si no existe
+            //marcador.EstablecerPuntuacion(puntosAcumulados);
+
             marcador.EstablecerPuntuacion(0);
         }
 
@@ -39,6 +46,21 @@ public class ScriptJuego : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    void CalcularLimitesPantalla()
+    {
+        // Convertir los puntos del viewport a coordenadas del mundo
+        Vector3 esquinaIzquierda = Camera.main.ViewportToWorldPoint(new Vector3(margenPantalla, 0.5f, 0));
+        Vector3 esquinaDerecha = Camera.main.ViewportToWorldPoint(new Vector3(1 - margenPantalla, 0.5f, 0));
+
+        limiteIzquierdo = esquinaIzquierda.x;
+        limiteDerecho = esquinaDerecha.x;
+
+        // Calcular la altura de generación basada en el viewport superior
+        Vector3 puntoSuperior = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 1.1f, 0));
+        alturaGeneracion = puntoSuperior.y;
+
+        Debug.Log($"Límites calculados: Izquierdo={limiteIzquierdo}, Derecho={limiteDerecho}, Altura={alturaGeneracion}");
+    }
 
     private void Update()
     {
@@ -86,7 +108,7 @@ public class ScriptJuego : MonoBehaviour
 
             // Generar posición X dentro de los límites establecidos
             float posicionX = Random.Range(limiteIzquierdo, limiteDerecho);
-            Vector3 posicion = new Vector3(posicionX, 10f, 0f);
+            Vector3 posicion = new Vector3(posicionX, alturaGeneracion, 0f);
 
             GameObject nuevoObjeto = Instantiate(objetosPrefab[indice], posicion, Quaternion.identity);
             ObjetoCaida script = nuevoObjeto.AddComponent<ObjetoCaida>();
@@ -111,15 +133,7 @@ public class ScriptJuego : MonoBehaviour
 
     public void IrASiguientePantalla()
     {
-        if (SceneLoader.Instance != null)
-        {
-            SceneLoader.Instance.LoadScene(nextSceneName);
-        }
-        else
-        {
-            Debug.LogError("❌ SceneLoader.Instance no encontrado.");
-        }
+        SceneManager.LoadScene(nextSceneName);
     }
-
 
 }

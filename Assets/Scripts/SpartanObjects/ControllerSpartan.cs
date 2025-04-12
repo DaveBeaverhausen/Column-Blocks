@@ -4,8 +4,35 @@ public class ControllerSpartan : MonoBehaviour
 {
     Vector3 direccion;
     public int velocidad = 10;
-    private float limiteIzquierdo = -2.4f;
-    private float limiteDerecho = 2.4f;
+    private float limiteIzquierdo;
+    private float limiteDerecho;
+
+    // Márgenes opcionales (porcentaje de pantalla a mantener como borde)
+    [Range(0, 0.2f)]
+    public float margenPantalla = 0.05f;
+
+    void Start()
+    {
+        CalcularLimitesPantalla();
+    }
+
+    // Recalcular límites si la resolución cambia
+    void OnRectTransformDimensionsChange()
+    {
+        CalcularLimitesPantalla();
+    }
+
+    void CalcularLimitesPantalla()
+    {
+        // Convertir los puntos del viewport a coordenadas del mundo
+        Vector3 esquinaIzquierda = Camera.main.ViewportToWorldPoint(new Vector3(margenPantalla, 0.5f, 0));
+        Vector3 esquinaDerecha = Camera.main.ViewportToWorldPoint(new Vector3(1 - margenPantalla, 0.5f, 0));
+
+        limiteIzquierdo = esquinaIzquierda.x;
+        limiteDerecho = esquinaDerecha.x;
+
+        Debug.Log($"Límites calculados: Izquierdo={limiteIzquierdo}, Derecho={limiteDerecho}");
+    }
 
     void Update()
     {
