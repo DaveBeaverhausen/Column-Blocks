@@ -12,7 +12,7 @@ public class ErrorVR : MonoBehaviour
         }
         else
         {
-            Debug.LogError("❌ SceneLoader.Instance no encontrado.");
+            Debug.LogError("SceneLoader.Instance no encontrado.");
         }
     }
 }

@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform ultimoBloque;  // Torre
+    public Transform ultimoBloque;  
     public float smoothSpeed = 2f;
-    public float verticalOffset = 6f; // Espacio visual para ver el gancho
+    public float verticalOffset = 6f; 
 
     private float minY;
 

@@ -29,7 +29,7 @@ public class FinalScoreController : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Home"); // Fallback
+            SceneManager.LoadScene("Home"); 
         }
     }
 }

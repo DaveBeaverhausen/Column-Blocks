@@ -22,7 +22,7 @@ public class HomeController : MonoBehaviour
     {
         if (SceneLoader.Instance == null)
         {
-            Debug.LogError("❌ SceneLoader.Instance no encontrado.");
+            Debug.LogError("SceneLoader.Instance no encontrado.");
             return;
         }
 
@@ -40,7 +40,7 @@ public class HomeController : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Fallback por si no está aún activo
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
         }
     }
 }

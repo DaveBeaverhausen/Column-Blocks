@@ -44,7 +44,7 @@ public class Bloque : MonoBehaviour
 
             if (audioSource != null) 
             { 
-                //audioSource.pitch = Random.Range(0.95f, 1.05f);
+                // Reproducir el sonido de colisión
                 audioSource.Play();
             }
 

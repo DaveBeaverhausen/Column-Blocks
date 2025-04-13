@@ -7,7 +7,7 @@ public class MusicManager : MonoBehaviour
 
     void Awake()
     {
-        // Singleton: Solo una instancia
+        
         if (instancia == null)
         {
             instancia = this;

@@ -11,7 +11,7 @@ public class FondoInfinito : MonoBehaviour
 
     void Update()
     {
-        // Si la cámara está a punto de llegar a este fondo
+        
         if (camara.position.y >= transform.position.y && !fondoInstanciado)
         {
             Vector3 nuevaPos = new Vector3(transform.position.x, transform.position.y + alturaFondo, transform.position.z);

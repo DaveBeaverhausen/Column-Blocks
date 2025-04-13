@@ -125,11 +125,11 @@ public class ScriptJuego : MonoBehaviour
         // Cambiar el color si el tiempo es crítico
         if (tiempo <= 10f)
         {
-            textoTiempo.color = Color.red; // o usa un Color personalizado si querés
+            textoTiempo.color = Color.red; 
         }
         else
         {
-            textoTiempo.color = Color.black; // o tu color original
+            textoTiempo.color = Color.black; 
         }
 
         textoTiempo.text = $"TIEMPO\n{minutos:00}:{segundos:00}";

@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false;
         audioSource.loop = false;
-        audioSource.spatialBlend = 0f; // 2D
+        audioSource.spatialBlend = 0f; 
         audioSource.volume = 1f;
         audioSource.ignoreListenerPause = true;
     }

@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
     public float tiempoRestante = 90f;
     private int puntuacion = 0;
     private bool juegoTerminado = false;
-    private bool bloqueEsperandoAsentarse = false; // flag
+    private bool bloqueEsperandoAsentarse = false; 
 
     [Header("Transición al finalizar el tiempo")]
     public string nextSceneName = "ErrorVR"; // Nombre de la escena a la que cambiar cuando se acabe el tiempo
@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         // Cargar los puntos acumulados al inicio
-        //puntuacion = PlayerPrefs.GetInt("PuntosAcumulados", 0); // 0 es el valor por defecto si no existe
+
         puntuacion = 0;
 
         gameOverPanel.SetActive(false);
@@ -79,7 +79,7 @@ public class GameController : MonoBehaviour
             }
             else
             {
-                textoTiempo.color = Color.black; // o tu color original
+                textoTiempo.color = Color.black; 
             }
         }
     }
@@ -122,7 +122,7 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
-        if (juegoTerminado) return; // ✅ Bloquea llamadas duplicadas
+        if (juegoTerminado) return; // Bloquea llamadas duplicadas
 
         juegoTerminado = true;
 
@@ -155,7 +155,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("❌ SceneLoader.Instance no encontrado.");
+            Debug.LogError("SceneLoader.Instance no encontrado.");
         }
     }
 

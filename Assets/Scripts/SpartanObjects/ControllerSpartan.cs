@@ -8,7 +8,7 @@ public class ControllerSpartan : MonoBehaviour
     private float limiteDerecho;
     private ScriptJuego scriptJuego;
 
-    // Márgenes opcionales (porcentaje de pantalla a mantener como borde)
+    
     [Range(0, 0.2f)]
     public float margenPantalla = 0.05f;
 
@@ -18,7 +18,7 @@ public class ControllerSpartan : MonoBehaviour
         scriptJuego = FindFirstObjectByType<ScriptJuego>();
     }
 
-    // Recalcular límites si la resolución cambia
+    
     void OnRectTransformDimensionsChange()
     {
         CalcularLimitesPantalla();
@@ -26,19 +26,19 @@ public class ControllerSpartan : MonoBehaviour
 
     void CalcularLimitesPantalla()
     {
-        // Convertir los puntos del viewport a coordenadas del mundo
+        
         Vector3 esquinaIzquierda = Camera.main.ViewportToWorldPoint(new Vector3(margenPantalla, 0.5f, 0));
         Vector3 esquinaDerecha = Camera.main.ViewportToWorldPoint(new Vector3(1 - margenPantalla, 0.5f, 0));
 
         limiteIzquierdo = esquinaIzquierda.x;
         limiteDerecho = esquinaDerecha.x;
 
-        Debug.Log($"Límites calculados: Izquierdo={limiteIzquierdo}, Derecho={limiteDerecho}");
+        Debug.Log($"Limites calculados: Izquierdo={limiteIzquierdo}, Derecho={limiteDerecho}");
     }
 
     void Update()
     {
-        // No mover espartano si el juego está inactivo
+        // No mover espartano si el juego esta inactivo
         if (scriptJuego == null || !scriptJuego.juegoActivo) return;
 
         // Movimiento con teclado (para pruebas en PC)
@@ -49,7 +49,7 @@ public class ControllerSpartan : MonoBehaviour
             MoverJugador();
         }
 
-        // Movimiento táctil para móvil
+        // Movimiento tactil para movil
         if (Input.touchCount > 0)
         {
             Touch toque = Input.GetTouch(0);
