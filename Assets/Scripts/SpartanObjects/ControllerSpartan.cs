@@ -6,6 +6,7 @@ public class ControllerSpartan : MonoBehaviour
     public int velocidad = 10;
     private float limiteIzquierdo;
     private float limiteDerecho;
+    private ScriptJuego scriptJuego;
 
     // Márgenes opcionales (porcentaje de pantalla a mantener como borde)
     [Range(0, 0.2f)]
@@ -14,6 +15,7 @@ public class ControllerSpartan : MonoBehaviour
     void Start()
     {
         CalcularLimitesPantalla();
+        scriptJuego = FindFirstObjectByType<ScriptJuego>();
     }
 
     // Recalcular límites si la resolución cambia
@@ -36,6 +38,9 @@ public class ControllerSpartan : MonoBehaviour
 
     void Update()
     {
+        // No mover espartano si el juego está inactivo
+        if (scriptJuego == null || !scriptJuego.juegoActivo) return;
+
         // Movimiento con teclado (para pruebas en PC)
         float horizontal = Input.GetAxis("Horizontal");
         if (horizontal != 0)

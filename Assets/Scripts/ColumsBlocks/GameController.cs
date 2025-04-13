@@ -129,36 +129,11 @@ public class GameController : MonoBehaviour
         Time.timeScale = 0;
     }
 
-
-    /*public void Reintentar()
-    {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void Salir()
-    {
-        Application.Quit();
-        Debug.Log("Salir del juego");
-    }
-    */
-
     public void SumarPunto()
     {
         puntuacion++;
         ActualizarUI();
     }
-
-    /*private void ChangeSceneOnTimeEnd()
-    {
-        juegoTerminado = true;
-
-        
-        PlayerPrefs.SetInt("PuntosAcumulados", puntuacion);
-        PlayerPrefs.Save(); 
-
-        SceneManager.LoadScene(nextSceneName); // Cambiar a la escena especificada
-    }*/
 
     public void IrASiguienteEscena()
     {
