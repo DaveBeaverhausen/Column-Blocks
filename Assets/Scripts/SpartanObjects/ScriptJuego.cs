@@ -33,9 +33,6 @@ public class ScriptJuego : MonoBehaviour
         // Cargar los puntos acumulados al inicio (si los hay)
         if (marcador != null)
         {
-            //int puntosAcumulados = PlayerPrefs.GetInt("PuntosAcumulados", 0); // 0 es el valor por defecto si no existe
-            //marcador.EstablecerPuntuacion(puntosAcumulados);
-
             marcador.EstablecerPuntuacion(0);
         }
 
@@ -64,8 +61,9 @@ public class ScriptJuego : MonoBehaviour
         if (!juegoActivo) return;
 
         tiempoTotal -= Time.deltaTime;
+        MostrarTiempo(tiempoTotal);
         velocidadCaida += Time.deltaTime * 0.1f;
-
+        
         if (tiempoTotal <= 0)
         {
             tiempoTotal = 0;
@@ -87,8 +85,6 @@ public class ScriptJuego : MonoBehaviour
 
 
         }
-
-        MostrarTiempo(tiempoTotal);
     }
 
     IEnumerator GenerarObjetos()
@@ -123,7 +119,7 @@ public class ScriptJuego : MonoBehaviour
     {
         int minutos = Mathf.FloorToInt(tiempo / 60);
         int segundos = Mathf.FloorToInt(tiempo % 60);
-        textoTiempo.text = $"TIEMPO {minutos:00}:{segundos:00}";
+        textoTiempo.text = $"TIEMPO\n{minutos:00}:{segundos:00}";
     }
 
     public void IrASiguientePantalla()

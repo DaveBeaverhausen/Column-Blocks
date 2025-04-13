@@ -13,7 +13,7 @@ public class ObjetoCaida : MonoBehaviour
     void Start()
     {
         // Buscar la referencia al controlador del juego
-        scriptJuego = FindObjectOfType<ScriptJuego>();
+        scriptJuego = FindFirstObjectByType<ScriptJuego>();
 
         // Calcular el límite inferior basado en la cámara
         Vector3 puntoInferior = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, -0.1f, 0));
