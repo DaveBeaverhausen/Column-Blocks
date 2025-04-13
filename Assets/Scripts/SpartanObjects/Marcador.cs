@@ -41,6 +41,6 @@ public class Marcador : MonoBehaviour
     //Actualizar el marcador
     private void ActualizarTexto()
     {
-        textoMarcador.text = score.ToString(); 
+        textoMarcador.text = score.ToString();
     }
 }

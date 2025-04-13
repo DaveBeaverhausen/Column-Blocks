@@ -26,7 +26,7 @@ public class Bloque : MonoBehaviour
             if (gameController != null)
             {
                 gameController.GameOver();
-                gameController.BloqueAsentado(); // Liberar siguiente intento aunque sea Game Over
+                gameController.BloqueAsentado(); 
             }
         }
     }
@@ -42,8 +42,8 @@ public class Bloque : MonoBehaviour
         {
             haColisionado = true;
 
-            if (audioSource != null) 
-            { 
+            if (audioSource != null)
+            {
                 //audioSource.pitch = Random.Range(0.95f, 1.05f);
                 audioSource.Play();
             }

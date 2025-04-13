@@ -13,7 +13,7 @@ public class ObjetoCaida : MonoBehaviour
     void Start()
     {
         // Buscar la referencia al controlador del juego
-        scriptJuego = FindObjectOfType<ScriptJuego>();
+        scriptJuego = FindFirstObjectByType<ScriptJuego>();
 
         // Calcular el límite inferior basado en la cámara
         Vector3 puntoInferior = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, -0.1f, 0));
@@ -44,16 +44,13 @@ public class ObjetoCaida : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Si colisiona con el jugador
         if (collision.gameObject.CompareTag("Player") && !contabilizado)
         {
-            marcador.DecrementarPuntuacion(1); // Resta 1 punto
+            GameController gameController = FindFirstObjectByType<GameController>();
+
             contabilizado = true;
             AudioSource audio = collision.gameObject.GetComponent<AudioSource>();
-            if (audio != null)
-            {
-                audio.Play();
-            }
+            if (audio != null) audio.Play();
             Destroy(gameObject);
         }
     }

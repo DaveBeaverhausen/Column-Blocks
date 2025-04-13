@@ -1,29 +1,45 @@
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class FondoInfinito : MonoBehaviour
 {
-    public float alturaFondo = 17.5f;
-    public UnityEngine.Transform camara;
+    public float alturaFondo = 17.5f; // Altura de cada imagen del fondo
+    public Transform camara; // Referencia a la cámara principal
 
+    private Vector3 posicionInicial;
+    private float limiteSuperior;
+    private float limiteInferior;
 
-    private bool fondoInstanciado = false;
+    void Start()
+    {
+        // Guardar la posición inicial del fondo
+        posicionInicial = transform.position;
+
+        // Calcular límites superior e inferior basados en la altura del fondo
+        limiteSuperior = posicionInicial.y + alturaFondo;
+        limiteInferior = posicionInicial.y - alturaFondo;
+    }
 
     void Update()
     {
-        // Si la cámara está a punto de llegar a este fondo
-        if (camara.position.y >= transform.position.y && !fondoInstanciado)
+        // Si la cámara supera el límite superior, reposicionar el fondo hacia abajo
+        if (camara.position.y >= limiteSuperior)
         {
-            Vector3 nuevaPos = new Vector3(transform.position.x, transform.position.y + alturaFondo, transform.position.z);
-            GameObject nuevoFondo = Instantiate(gameObject, nuevaPos, Quaternion.identity);
-            nuevoFondo.GetComponent<FondoInfinito>().camara = camara;
-
-            fondoInstanciado = true;
+            ReposicionarFondo(-alturaFondo);
         }
-        if (camara.position.y - transform.position.y > alturaFondo * 2)
+
+        // Si la cámara supera el límite inferior, reposicionar el fondo hacia arriba
+        if (camara.position.y <= limiteInferior)
         {
-            Destroy(gameObject);
+            ReposicionarFondo(alturaFondo);
         }
     }
-}
 
+    void ReposicionarFondo(float desplazamiento)
+    {
+        transform.position += new Vector3(0, desplazamiento, 0);
+
+        // Actualizar límites después de reposicionar
+        limiteSuperior += desplazamiento;
+        limiteInferior += desplazamiento;
+    }
+}

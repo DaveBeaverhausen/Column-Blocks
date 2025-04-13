@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
 
 public class GameController : MonoBehaviour
 {
@@ -21,11 +22,10 @@ public class GameController : MonoBehaviour
     public float tiempoRestante = 90f;
     private int puntuacion = 0;
     private bool juegoTerminado = false;
-    private bool bloqueEsperandoAsentarse = false; // flag
+    private bool bloqueEsperandoAsentarse = false;
 
-    [Header("Transición al finalizar el tiempo")]
-    public string nextSceneName = "ErrorVR"; // Nombre de la escena a la que cambiar cuando se acabe el tiempo
-
+    [Header("Transición")]
+    public string nextSceneName = "ErrorVR";
     public CameraFollow cameraFollow;
     public Gancho ganchoScript;
     public float incrementoVelocidad = 0.5f;
@@ -35,31 +35,28 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        // Cargar los puntos acumulados al inicio
-        //puntuacion = PlayerPrefs.GetInt("PuntosAcumulados", 0); // 0 es el valor por defecto si no existe
-        puntuacion = 0;
-
+        audioSource = GetComponent<AudioSource>();
         gameOverPanel.SetActive(false);
+        puntuacion = 0;
         ActualizarUI();
         CrearNuevoBloque();
-
-        audioSource = GetComponent<AudioSource>();
+        Time.timeScale = 1; // Asegurarse de que el tiempo esté activo
     }
 
     void Update()
     {
         if (juegoTerminado) return;
 
-        if (Input.GetMouseButtonDown(0) && bloqueActual != null && !bloqueEsperandoAsentarse)
-        {
-            SoltarBloque();
-        }
-
         tiempoRestante -= Time.deltaTime;
         if (tiempoRestante <= 0)
         {
             tiempoRestante = 0;
-            //ChangeSceneOnTimeEnd(); // Cambiar de escena cuando se acabe el tiempo
+            GameOver();
+        }
+
+        if (Input.GetMouseButtonDown(0) && bloqueActual != null && !bloqueEsperandoAsentarse)
+        {
+            SoltarBloque();
         }
 
         ActualizarUI();
@@ -67,15 +64,8 @@ public class GameController : MonoBehaviour
 
     void ActualizarUI()
     {
-        if (textoPuntuacion != null)
-            textoPuntuacion.text = "MARCA\n" + puntuacion;
-
-        if (textoTiempo != null)
-        {
-            int minutos = Mathf.FloorToInt(tiempoRestante / 60f);
-            int segundos = Mathf.FloorToInt(tiempoRestante % 60f);
-            textoTiempo.text = $"TIEMPO\n{minutos:00}:{segundos:00}";
-        }
+        textoPuntuacion.text = $"MARCA\n{puntuacion}";
+        textoTiempo.text = $"TIEMPO\n{Mathf.FloorToInt(tiempoRestante / 60):00}:{Mathf.FloorToInt(tiempoRestante % 60):00}";
     }
 
     void CrearNuevoBloque()
@@ -84,9 +74,11 @@ public class GameController : MonoBehaviour
         bloqueActual.transform.parent = gancho;
         bloqueActual.GetComponent<Rigidbody2D>().simulated = false;
 
-        bloqueActual.GetComponent<Bloque>().gameController = this;
+        Bloque bloqueScript = bloqueActual.GetComponent<Bloque>();
+        if (bloqueScript != null)
+            bloqueScript.gameController = this;
 
-        bloqueEsperandoAsentarse = false; // Por si viene de GameOver en pausa
+        bloqueEsperandoAsentarse = false;
     }
 
     void SoltarBloque()
@@ -94,15 +86,12 @@ public class GameController : MonoBehaviour
         bloqueActual.transform.parent = null;
         Rigidbody2D rb = bloqueActual.GetComponent<Rigidbody2D>();
         rb.simulated = true;
-        rb.linearVelocity = Vector2.zero;
 
-        if (cameraFollow != null)
-            cameraFollow.SetUltimoBloque(bloqueActual.transform);
+        cameraFollow.SetUltimoBloque(bloqueActual.transform);
 
-        if (ganchoScript != null)
-            ganchoScript.velocidad = Mathf.Min(ganchoScript.velocidad + incrementoVelocidad, velocidadMaxima);
+        ganchoScript.velocidadInicial = Mathf.Min(ganchoScript.velocidadInicial + incrementoVelocidad, velocidadMaxima);
 
-        bloqueEsperandoAsentarse = true; // no se puede lanzar hasta que avise
+        bloqueEsperandoAsentarse = true;
         bloqueActual = null;
     }
 
@@ -114,67 +103,35 @@ public class GameController : MonoBehaviour
         Invoke(nameof(CrearNuevoBloque), 0.5f);
     }
 
-    public void GameOver()
-    {
-        juegoTerminado = true;
-
-        PlayerPrefs.SetInt("Puntos_Prueba2", puntuacion); // Guardar puntuación de esta prueba
-        PlayerPrefs.Save();
-
-        if (textoMarca != null)
-        {
-            textoMarca.text = "Marca: " + puntuacion;
-        }
-
-        gameOverPanel.SetActive(true);
-
-        audioSource.PlayOneShot(sonidoGameOver);
-
-        Time.timeScale = 0;
-    }
-
-    /*public void Reintentar()
-    {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void Salir()
-    {
-        Application.Quit();
-        Debug.Log("Salir del juego");
-    }
-    */
-
     public void SumarPunto()
     {
         puntuacion++;
         ActualizarUI();
     }
 
-    /*private void ChangeSceneOnTimeEnd()
+    public void GameOver()
     {
+        if (juegoTerminado) return;
+
         juegoTerminado = true;
 
-        
-        PlayerPrefs.SetInt("PuntosAcumulados", puntuacion);
-        PlayerPrefs.Save(); 
+        PlayerPrefs.SetInt("Puntos_Prueba2", puntuacion);
+        PlayerPrefs.Save();
 
-        SceneManager.LoadScene(nextSceneName); // Cambiar a la escena especificada
-    }*/
+        if (textoMarca != null)
+            textoMarca.text = $"Marca: {puntuacion}";
+
+        gameOverPanel.SetActive(true);
+
+        if (audioSource != null && sonidoGameOver != null)
+            audioSource.PlayOneShot(sonidoGameOver);
+
+        Time.timeScale = 0; // Detener el tiempo
+    }
 
     public void IrASiguienteEscena()
     {
         Time.timeScale = 1;
-
-        if (SceneLoader.Instance != null)
-        {
-            SceneLoader.Instance.LoadScene(nextSceneName);
-        }
-        else
-        {
-            Debug.LogError("❌ SceneLoader.Instance no encontrado.");
-        }
+        SceneManager.LoadScene(nextSceneName);
     }
-
 }
