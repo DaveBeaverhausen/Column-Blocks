@@ -4,7 +4,7 @@ using System.Collections;
 
 public class ErrorAR : MonoBehaviour
 {
-    private string nextSceneName = "Home";
+    private string nextSceneName = "FinalScene";
 
     /*public float waitTime = 4f;
 
