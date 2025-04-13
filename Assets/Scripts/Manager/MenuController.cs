@@ -5,7 +5,7 @@ using System.Collections;
 public class MenuController : MonoBehaviour
 {
     public string nextSceneName = "Home";
-    public float waitTime = 7f;
+    public float waitTime = 4f;
 
     void Start()
     {
@@ -22,7 +22,7 @@ public class MenuController : MonoBehaviour
     {
         if (SceneLoader.Instance == null)
         {
-            Debug.LogError("SceneLoader.Instance no encontrado. ¿Seguro que está en escena inicial?");
+            Debug.LogError("SceneLoader.Instance no encontrado.");
             return;
         }
 

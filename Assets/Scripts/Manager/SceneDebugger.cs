@@ -11,7 +11,7 @@ public class SceneDebugger : MonoBehaviour
         for (int i = 0; i < SceneManager.sceneCount; i++)
         {
             var escena = SceneManager.GetSceneAt(i);
-            Debug.Log($"🌐 Escena activa [{i}]: {escena.name}");
+            Debug.Log($"Escena activa [{i}]: {escena.name}");
         }
 
         

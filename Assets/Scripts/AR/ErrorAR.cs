@@ -6,20 +6,6 @@ public class ErrorAR : MonoBehaviour
 {
     private string nextSceneName = "FinalScene";
 
-    /*public float waitTime = 4f;
-
-    void Start()
-    {
-        StartCoroutine(ChangeSceneAfterDelay());
-    }
-
-    IEnumerator ChangeSceneAfterDelay()
-    {
-        yield return new WaitForSeconds(waitTime);
-        GoToNextScene();
-    }
-    */
-
     public void GoToNextScene()
     {
         if (SceneLoader.Instance != null)
@@ -32,8 +18,3 @@ public class ErrorAR : MonoBehaviour
         }
     }
 }
-
-/**
-*Usamos coroutine, que nos permite esperar el tiempo propuesto(7segundos) y cambiar de escena
-*Para usar la herramienta coroutine, usamos System.Collections
-**/

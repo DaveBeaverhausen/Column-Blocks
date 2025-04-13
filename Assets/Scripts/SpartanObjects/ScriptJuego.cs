@@ -30,7 +30,7 @@ public class ScriptJuego : MonoBehaviour
         // Calcular límites de pantalla para la generación de objetos
         CalcularLimitesPantalla();
 
-        // Cargar los puntos acumulados al inicio (si los hay)
+        // Cargar los puntos a 0
         if (marcador != null)
         {
             marcador.EstablecerPuntuacion(0);

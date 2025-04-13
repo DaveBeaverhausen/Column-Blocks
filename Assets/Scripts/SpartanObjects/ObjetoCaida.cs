@@ -58,8 +58,3 @@ public class ObjetoCaida : MonoBehaviour
         }
     }
 }
-
-/*
-**Usamos la clase Playerprefs que nos permite guardar y recuperar datos.
-**De esta manera, podemos acumular la puntuaci�n pantalla a pantalla.
-*/

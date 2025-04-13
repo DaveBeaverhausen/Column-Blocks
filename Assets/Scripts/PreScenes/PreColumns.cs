@@ -4,7 +4,7 @@ using System.Collections;
 public class PreColumns : MonoBehaviour
 {
     private string nextSceneName = "ColumnsBlocks";
-    public float waitTime = 4f;
+    public float waitTime = 3f;
 
     void Start()
     {

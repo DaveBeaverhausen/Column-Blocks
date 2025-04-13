@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: Home
-  waitTime: 7
+  waitTime: 4
 --- !u!4 &623440151
 Transform:
   m_ObjectHideFlags: 0

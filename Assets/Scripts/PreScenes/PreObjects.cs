@@ -10,7 +10,7 @@ public class PreObjects : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1f; 
-        Debug.Log("⏳ PreObjects: esperando " + waitTime + " segundos...");
+        Debug.Log("PreObjects: esperando " + waitTime + " segundos...");
 
         StartCoroutine(CambiarDeEscenaConDelay());
     }
