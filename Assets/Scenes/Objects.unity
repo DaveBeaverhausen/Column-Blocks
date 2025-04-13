@@ -334,7 +334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120.6, y: -71}
+  m_AnchoredPosition: {x: 209, y: -67}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &172084128
@@ -1225,7 +1225,7 @@ MonoBehaviour:
   - {fileID: 5671908210361504814, guid: f288799163fc6444782ec92379339f52, type: 3}
   - {fileID: 1962533277561544452, guid: c6dd8ad38c921234f9c35602fd3c7115, type: 3}
   - {fileID: 242539893184609220, guid: 628143d4cc79453428e28e7b399bf199, type: 3}
-  tiempoTotal: 60
+  tiempoTotal: 90
   textoTiempo: {fileID: 1307922031}
   marcador: {fileID: 172084130}
   nextSceneName: PreColumns
@@ -1561,7 +1561,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 422.7, y: 176.2}
+  m_AnchoredPosition: {x: 321, y: 198}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1307922030

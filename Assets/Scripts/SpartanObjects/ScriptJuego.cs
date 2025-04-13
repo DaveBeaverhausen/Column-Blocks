@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 public class ScriptJuego : MonoBehaviour
 {
     public GameObject[] objetosPrefab;
-    public float tiempoTotal = 60f;
+    public float tiempoTotal = 90f;
     public TextMeshProUGUI textoTiempo;
     public Marcador marcador;
     public string nextSceneName = "PreColumns";
     public GameObject gameOverPanel;
     public TextMeshProUGUI textoMarca;
 
-    private float velocidadCaida = 2f;
+    private float velocidadCaida = 3f;
     public bool juegoActivo = true;
     private float limiteIzquierdo;
     private float limiteDerecho;
@@ -117,10 +117,24 @@ public class ScriptJuego : MonoBehaviour
 
     void MostrarTiempo(float tiempo)
     {
+        tiempo = Mathf.Max(tiempo, 0); // Prevenir números negativos
+
         int minutos = Mathf.FloorToInt(tiempo / 60);
         int segundos = Mathf.FloorToInt(tiempo % 60);
+
+        // Cambiar el color si el tiempo es crítico
+        if (tiempo <= 10f)
+        {
+            textoTiempo.color = Color.red; // o usa un Color personalizado si querés
+        }
+        else
+        {
+            textoTiempo.color = Color.black; // o tu color original
+        }
+
         textoTiempo.text = $"TIEMPO\n{minutos:00}:{segundos:00}";
     }
+
 
     public void IrASiguientePantalla()
     {

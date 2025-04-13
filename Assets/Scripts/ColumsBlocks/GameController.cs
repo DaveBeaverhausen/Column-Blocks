@@ -55,7 +55,7 @@ public class GameController : MonoBehaviour
         if (tiempoRestante <= 0)
         {
             tiempoRestante = 0;
-            //ChangeSceneOnTimeEnd(); // Cambiar de escena cuando se acabe el tiempo
+            GameOver();
         }
 
         ActualizarUI();
@@ -71,6 +71,16 @@ public class GameController : MonoBehaviour
             int minutos = Mathf.FloorToInt(tiempoRestante / 60f);
             int segundos = Mathf.FloorToInt(tiempoRestante % 60f);
             textoTiempo.text = $"TIEMPO\n{minutos:00}:{segundos:00}";
+
+            //Cambiar color si quedan menos de 10 segundos
+            if (tiempoRestante <= 10f)
+            {
+                textoTiempo.color = Color.red;
+            }
+            else
+            {
+                textoTiempo.color = Color.black; // o tu color original
+            }
         }
     }
 
