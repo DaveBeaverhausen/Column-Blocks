@@ -690,64 +690,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541929499}
   m_CullTransparentMesh: 1
---- !u!1 &549759488
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 549759490}
-  - component: {fileID: 549759489}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &549759489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 549759488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc9c2a170f1a0564fbb94adde2c81694, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bloquePrefab: {fileID: 0}
-  gancho: {fileID: 0}
-  puntoCreacionBloque: {fileID: 0}
-  gameOverPanel: {fileID: 0}
-  textoPuntuacion: {fileID: 0}
-  textoTiempo: {fileID: 0}
-  sonidoGameOver: {fileID: 0}
-  textoMarca: {fileID: 0}
-  tiempoRestante: 90
-  nextSceneName: ErrorVR
-  cameraFollow: {fileID: 0}
-  ganchoScript: {fileID: 0}
-  incrementoVelocidad: 0.5
-  velocidadMaxima: 10
---- !u!4 &549759490
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 549759488}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 561.8216, y: 156.47906, z: -15.011066}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,7 +1381,6 @@ MonoBehaviour:
   gameOverPanel: {fileID: 541929499}
   textoPuntuacion: {fileID: 2021364277}
   textoTiempo: {fileID: 481802480}
-  sonidoGameOver: {fileID: 8300000, guid: 47ce7389142f3164a997c0a6787d7e49, type: 3}
   textoMarca: {fileID: 1982685270}
   tiempoRestante: 90
   nextSceneName: ErrorVR
@@ -2552,5 +2493,4 @@ SceneRoots:
   - {fileID: 1342691101}
   - {fileID: 807572438}
   - {fileID: 351284094}
-  - {fileID: 549759490}
   - {fileID: 1297279328}

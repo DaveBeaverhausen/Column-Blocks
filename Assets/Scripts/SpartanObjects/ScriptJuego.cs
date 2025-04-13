@@ -11,14 +11,12 @@ public class ScriptJuego : MonoBehaviour
     public Marcador marcador;
     public string nextSceneName = "PreColumns";
     public GameObject gameOverPanel;
-    public AudioClip sonidoGameOver;
     public TextMeshProUGUI textoMarca;
 
     private float velocidadCaida = 2f;
     public bool juegoActivo = true;
     private float limiteIzquierdo;
     private float limiteDerecho;
-    private AudioSource audioSource;
 
     // Altura desde donde aparecen los objetos
     private float alturaGeneracion = 10f;
@@ -43,7 +41,6 @@ public class ScriptJuego : MonoBehaviour
 
         StartCoroutine(GenerarObjetos());
         gameOverPanel.SetActive(false);
-        audioSource = GetComponent<AudioSource>();
     }
 
     void CalcularLimitesPantalla()
@@ -86,10 +83,8 @@ public class ScriptJuego : MonoBehaviour
 
             gameOverPanel.SetActive(true);
 
-            if (sonidoGameOver != null && audioSource != null)
-            {
-                audioSource.PlayOneShot(sonidoGameOver);
-            }
+            AudioManager.Instance.ReproducirSonidoGameOver();
+
 
         }
 

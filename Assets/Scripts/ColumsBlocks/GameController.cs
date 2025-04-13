@@ -14,8 +14,6 @@ public class GameController : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI textoPuntuacion;
     public TextMeshProUGUI textoTiempo;
-    public AudioClip sonidoGameOver;
-    private AudioSource audioSource;
     public TextMeshProUGUI textoMarca;
 
     [Header("Control")]
@@ -31,15 +29,22 @@ public class GameController : MonoBehaviour
     public float incrementoVelocidad = 0.5f;
     public float velocidadMaxima = 10f;
 
+    [Header("Audio")]
+    public AudioClip sonidoGameOver; // Clip de sonido para Game Over
+    private AudioSource audioSource; // Fuente de audio
+
     private GameObject bloqueActual;
 
     void Start()
     {
+        // Inicializar componentes
         audioSource = GetComponent<AudioSource>();
         gameOverPanel.SetActive(false);
         puntuacion = 0;
+
         ActualizarUI();
         CrearNuevoBloque();
+
         Time.timeScale = 1; // Asegurarse de que el tiempo esté activo
     }
 
@@ -115,7 +120,7 @@ public class GameController : MonoBehaviour
 
         juegoTerminado = true;
 
-        PlayerPrefs.SetInt("Puntos_Prueba2", puntuacion);
+        PlayerPrefs.SetInt("Puntos_Prueba2", puntuacion); // Guardar puntuación
         PlayerPrefs.Save();
 
         if (textoMarca != null)
@@ -123,7 +128,11 @@ public class GameController : MonoBehaviour
 
         gameOverPanel.SetActive(true);
 
-        if (audioSource != null && sonidoGameOver != null)
+        // Reproducir sonido de Game Over
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.ReproducirSonidoGameOver();
+
+        else if (audioSource != null && sonidoGameOver != null)
             audioSource.PlayOneShot(sonidoGameOver);
 
         Time.timeScale = 0; // Detener el tiempo

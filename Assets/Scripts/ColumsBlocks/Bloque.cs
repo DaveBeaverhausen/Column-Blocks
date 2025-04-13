@@ -26,7 +26,7 @@ public class Bloque : MonoBehaviour
             if (gameController != null)
             {
                 gameController.GameOver();
-                gameController.BloqueAsentado(); 
+                gameController.BloqueAsentado();
             }
         }
     }
