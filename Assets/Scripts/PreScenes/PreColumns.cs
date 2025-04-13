@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PreColumns : MonoBehaviour
 {
-    private string nextSceneName = "SampleScene";
+    private string nextSceneName = "ColumnsBlocks";
     public float waitTime = 4f;
 
     void Start()

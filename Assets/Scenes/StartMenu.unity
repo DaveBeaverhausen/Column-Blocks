@@ -623,6 +623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sonidoGameOver: {fileID: 8300000, guid: 47ce7389142f3164a997c0a6787d7e49, type: 3}
+  sonidoClickBoton: {fileID: 8300000, guid: 6accced61227c3b4e8d501158acb68f1, type: 3}
 --- !u!4 &786330399
 Transform:
   m_ObjectHideFlags: 0

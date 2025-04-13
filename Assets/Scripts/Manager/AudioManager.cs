@@ -36,7 +36,22 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("🎵 sonidoGameOver no asignado en el AudioManager.");
+            Debug.LogWarning("sonidoGameOver no asignado en el AudioManager.");
+        }
+    }
+
+    [Header("UI Sounds")]
+    public AudioClip sonidoClickBoton;
+
+    public void ReproducirSonidoClick()
+    {
+        if (sonidoClickBoton != null)
+        {
+            audioSource.PlayOneShot(sonidoClickBoton);
+        }
+        else
+        {
+            Debug.LogWarning("sonidoClickBoton no asignado.");
         }
     }
 }

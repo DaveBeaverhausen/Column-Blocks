@@ -5,9 +5,15 @@ using UnityEngine.SceneManagement;
 public class HomeController : MonoBehaviour
 {
     public TextMeshProUGUI puntosText; // Texto donde se mostrarán los resultados
+    public AudioClip musicaHome;
 
     void Start()
     {
+        if (MusicManager.instancia != null && musicaHome != null)
+        {
+            MusicManager.instancia.CambiarMusica(musicaHome, true);
+        }
+
         int puntos1 = PlayerPrefs.GetInt("Puntos_Prueba1", 0);
         int puntos2 = PlayerPrefs.GetInt("Puntos_Prueba2", 0);
         int total = puntos1 + puntos2;
