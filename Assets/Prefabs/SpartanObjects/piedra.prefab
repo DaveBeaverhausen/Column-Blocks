@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1901600347523391715}
   - component: {fileID: 7112830509527438767}
   - component: {fileID: 4588338949810672088}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: piedra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,9 +75,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: 787616363
+  m_SortingLayer: 3
+  m_SortingOrder: 3
   m_Sprite: {fileID: -9152689546471649384, guid: d70c98bcb8ebb7c4ab62fc9ae2bb582f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

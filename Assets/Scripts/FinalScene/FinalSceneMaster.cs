@@ -8,6 +8,8 @@ public class FinalScoreController : MonoBehaviour
 
     void Start()
     {
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+
         int puntos1 = PlayerPrefs.GetInt("Puntos_Prueba1", 0);
         int puntos2 = PlayerPrefs.GetInt("Puntos_Prueba2", 0);
         int total = puntos1 + puntos2;

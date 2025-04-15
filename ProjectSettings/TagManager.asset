@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bloque
   - Plataforma
+  - ZonaEsquivar
   layers:
   - Default
   - TransparentFX
@@ -13,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Object
   - 
   - 
   - 
@@ -48,6 +49,9 @@ TagManager:
     locked: 0
   - name: GamePlay
     uniqueID: 3492318431
+    locked: 0
+  - name: GameOver
+    uniqueID: 787616363
     locked: 0
   m_RenderingLayers:
   - Default
