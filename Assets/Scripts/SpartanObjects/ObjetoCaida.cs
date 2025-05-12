@@ -6,7 +6,7 @@ public class ObjetoCaida : MonoBehaviour
     public float multiplicadorValocidad = 2f;
     public Marcador marcador;
 
-    private ScriptJuego scriptJuego;
+    public ScriptJuego scriptJuego;
     private bool contabilizado = false;
     private float limiteBordeInferior;
 
@@ -44,11 +44,16 @@ public class ObjetoCaida : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        
         if (collision.gameObject.CompareTag("Player") && !contabilizado)
         {
-            marcador.DecrementarPuntuacion(1); 
             contabilizado = true;
+
+            // Llamar a PerderVida para reducir las vidas del jugador
+            if (scriptJuego != null)
+            {
+                scriptJuego.PerderVida();
+            }
+
             AudioSource audio = collision.gameObject.GetComponent<AudioSource>();
             if (audio != null)
             {
@@ -57,4 +62,5 @@ public class ObjetoCaida : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }

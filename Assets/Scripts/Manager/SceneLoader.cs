@@ -5,8 +5,6 @@ public class SceneLoader : MonoBehaviour
 {
     public static SceneLoader Instance;
 
-    private bool isLoading = false;
-
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -34,21 +32,5 @@ public class SceneLoader : MonoBehaviour
         {
             SceneManager.LoadScene(sceneName);
         }
-    }
-
-    private System.Collections.IEnumerator LoadSceneCoroutine(string sceneName, float delay)
-    {
-        isLoading = true;
-
-        if (delay > 0)
-        {
-            Debug.Log("Esperando " + delay + " segundos antes de cambiar a escena: " + sceneName);
-            yield return new WaitForSeconds(delay);
-        }
-
-        Debug.Log("Cambiando a escena: " + sceneName);
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-
-        isLoading = false;
-    }
+    }   
 }

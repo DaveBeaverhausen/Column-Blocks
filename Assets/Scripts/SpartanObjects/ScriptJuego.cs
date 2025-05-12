@@ -13,6 +13,10 @@ public class ScriptJuego : MonoBehaviour
     public GameObject gameOverPanel;
     public TextMeshProUGUI textoMarca;
 
+    public int vidasIniciales = 5;
+    private int vidasActuales;
+    public TextMeshProUGUI Vidas;
+
     private float velocidadCaida = 3f;
     public bool juegoActivo = true;
     private float limiteIzquierdo;
@@ -27,33 +31,16 @@ public class ScriptJuego : MonoBehaviour
 
     private void Start()
     {
-        // Calcular límites de pantalla para la generación de objetos
         CalcularLimitesPantalla();
 
-        // Cargar los puntos a 0
         if (marcador != null)
-        {
             marcador.EstablecerPuntuacion(0);
-        }
+
+        vidasActuales = vidasIniciales;
+        ActualizarVidas();
 
         StartCoroutine(GenerarObjetos());
         gameOverPanel.SetActive(false);
-    }
-
-    void CalcularLimitesPantalla()
-    {
-        // Convertir los puntos del viewport a coordenadas del mundo
-        Vector3 esquinaIzquierda = Camera.main.ViewportToWorldPoint(new Vector3(margenPantalla, 0.5f, 0));
-        Vector3 esquinaDerecha = Camera.main.ViewportToWorldPoint(new Vector3(1 - margenPantalla, 0.5f, 0));
-
-        limiteIzquierdo = esquinaIzquierda.x;
-        limiteDerecho = esquinaDerecha.x;
-
-        // Calcular la altura de generación basada en el viewport superior
-        Vector3 puntoSuperior = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 1.1f, 0));
-        alturaGeneracion = puntoSuperior.y;
-
-        Debug.Log($"Límites calculados: Izquierdo={limiteIzquierdo}, Derecho={limiteDerecho}, Altura={alturaGeneracion}");
     }
 
     private void Update()
@@ -63,8 +50,30 @@ public class ScriptJuego : MonoBehaviour
         tiempoTotal -= Time.deltaTime;
         MostrarTiempo(tiempoTotal);
         velocidadCaida += Time.deltaTime * 0.1f;
-        
+
+        // Fin de juego por vidas agotadas
+        if (vidasActuales <= 0)
+        {
+            FinalizarJuego();
+            return;
+        }
+
+        // Fin de juego por tiempo agotado
         if (tiempoTotal <= 0)
+        {
+            FinalizarJuego();
+        }
+    }
+
+    public void PerderVida()
+    {
+        if (!juegoActivo) return;
+
+        vidasActuales--;
+        ActualizarVidas();
+
+        // Comprobar si se agotaron las vidas
+        if (vidasActuales <= 0)
         {
             tiempoTotal = 0;
             juegoActivo = false;
@@ -80,65 +89,86 @@ public class ScriptJuego : MonoBehaviour
             }
 
             gameOverPanel.SetActive(true);
-
             AudioManager.Instance.ReproducirSonidoGameOver();
-
-
         }
+    }
+
+    private void ActualizarVidas()
+    {
+        if (Vidas != null)
+        {
+            Vidas.text = "VIDAS: " + vidasActuales;
+        }
+    }
+
+    private void FinalizarJuego()
+    {
+        tiempoTotal = 0;
+        juegoActivo = false;
+
+        int puntosActuales = marcador.ObtenerPuntuacion();
+        PlayerPrefs.SetInt("Puntos_Prueba1", puntosActuales);
+        PlayerPrefs.Save();
+
+        if (textoMarca != null)
+            textoMarca.text = "Marca: " + puntosActuales;
+
+        gameOverPanel.SetActive(true);
+        AudioManager.Instance.ReproducirSonidoGameOver();
+    }
+
+    void CalcularLimitesPantalla()
+    {
+        Vector3 esquinaIzquierda = Camera.main.ViewportToWorldPoint(new Vector3(margenPantalla, 0.5f, 0));
+        Vector3 esquinaDerecha = Camera.main.ViewportToWorldPoint(new Vector3(1 - margenPantalla, 0.5f, 0));
+
+        limiteIzquierdo = esquinaIzquierda.x;
+        limiteDerecho = esquinaDerecha.x;
+
+        Vector3 puntoSuperior = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 1.1f, 0));
+        alturaGeneracion = puntoSuperior.y;
     }
 
     IEnumerator GenerarObjetos()
     {
-        float intervaloInicial = 2f; // Intervalo inicial entre objetos
-        float intervaloMinimo = 0.5f; // Intervalo mínimo entre objetos
-        float reduccionIntervalo = 0.1f; // Reducción del intervalo por cada objeto generado
+        float intervaloInicial = 2f;
+        float intervaloMinimo = 0.5f;
+        float reduccionIntervalo = 0.1f;
 
         while (juegoActivo)
         {
             int indice = Random.Range(0, objetosPrefab.Length);
-
-            // Generar posición X dentro de los límites establecidos
             float posicionX = Random.Range(limiteIzquierdo, limiteDerecho);
             Vector3 posicion = new Vector3(posicionX, alturaGeneracion, 0f);
 
             GameObject nuevoObjeto = Instantiate(objetosPrefab[indice], posicion, Quaternion.identity);
             ObjetoCaida script = nuevoObjeto.AddComponent<ObjetoCaida>();
-
             script.velocidadBase = velocidadCaida;
             script.marcador = marcador;
+            script.scriptJuego = this;
 
-            // Esperar antes de generar el siguiente objeto
             yield return new WaitForSeconds(intervaloInicial);
-
-            // Reducir gradualmente el intervalo hasta alcanzar el mínimo
             intervaloInicial = Mathf.Max(intervaloInicial - reduccionIntervalo, intervaloMinimo);
         }
     }
 
     void MostrarTiempo(float tiempo)
     {
-        tiempo = Mathf.Max(tiempo, 0); // Prevenir números negativos
+        tiempo = Mathf.Max(tiempo, 0);
 
         int minutos = Mathf.FloorToInt(tiempo / 60);
         int segundos = Mathf.FloorToInt(tiempo % 60);
 
-        // Cambiar el color si el tiempo es crítico
         if (tiempo <= 10f)
-        {
-            textoTiempo.color = Color.red; 
-        }
+            textoTiempo.color = Color.red;
         else
-        {
-            textoTiempo.color = Color.black; 
-        }
+            textoTiempo.color = Color.black;
 
         textoTiempo.text = $"TIEMPO\n{minutos:00}:{segundos:00}";
     }
-
 
     public void IrASiguientePantalla()
     {
         SceneManager.LoadScene(nextSceneName);
     }
-
 }

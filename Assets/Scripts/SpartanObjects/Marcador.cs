@@ -19,11 +19,11 @@ public class Marcador : MonoBehaviour
         ActualizarTexto();
     }
 
-    public void DecrementarPuntuacion(int puntos)
+    /*public void DecrementarPuntuacion(int puntos)
     {
         score -= puntos;
         ActualizarTexto();
-    }
+    }*/
 
     //Metodo para poder pasar la puntuacion de un juego a otro
     public int ObtenerPuntuacion()

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
 
 public class GameController : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class GameController : MonoBehaviour
     [Header("Control")]
     public float tiempoRestante = 90f;
     private int puntuacion = 0;
-    private bool juegoTerminado = false;
+    public bool juegoTerminado = false;
     private bool bloqueEsperandoAsentarse = false; 
 
     [Header("Transición al finalizar el tiempo")]
@@ -28,8 +29,11 @@ public class GameController : MonoBehaviour
     public Gancho ganchoScript;
     public float incrementoVelocidad = 0.5f;
     public float velocidadMaxima = 10f;
-
     private GameObject bloqueActual;
+
+    public int vidasIniciales = 5;
+    private int vidasActuales;
+    public TextMeshProUGUI Vidas;
 
     void Start()
     {
@@ -38,6 +42,7 @@ public class GameController : MonoBehaviour
         puntuacion = 0;
 
         gameOverPanel.SetActive(false);
+        vidasActuales = vidasIniciales;
         ActualizarUI();
         CrearNuevoBloque();
     }
@@ -82,6 +87,9 @@ public class GameController : MonoBehaviour
                 textoTiempo.color = Color.black; 
             }
         }
+
+        if (Vidas != null)
+            Vidas.text = "VIDAS: " + vidasActuales;
     }
 
     void CrearNuevoBloque()
@@ -117,7 +125,7 @@ public class GameController : MonoBehaviour
         if (juegoTerminado) return;
 
         bloqueEsperandoAsentarse = false;
-        Invoke(nameof(CrearNuevoBloque), 0.5f);
+        Invoke(nameof(CrearNuevoBloque), 0.25f);
     }
 
     public void GameOver()
@@ -136,7 +144,15 @@ public class GameController : MonoBehaviour
 
         gameOverPanel.SetActive(true);
         AudioManager.Instance.ReproducirSonidoGameOver();
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
+        
+        StartCoroutine(CargarEscenaFinal());
+    }
+
+    IEnumerator CargarEscenaFinal()
+    {
+        yield return new WaitForSeconds(1f); // Espera 1 segundo antes de cambiar
+        SceneManager.LoadScene("GameOverPanel");
     }
 
     public void SumarPunto()

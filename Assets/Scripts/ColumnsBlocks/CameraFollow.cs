@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform ultimoBloque;  
-    public float smoothSpeed = 2f;
-    public float verticalOffset = 6f; 
+    public Transform ultimoBloque;
+    public float velocidadMaxima = 4f; // Máxima velocidad de movimiento en Y
+    public float verticalOffset = 6f;
+    public float umbralAltura = 3f; // Altura mínima para activar movimiento
 
     private float minY;
 
@@ -19,13 +20,21 @@ public class CameraFollow : MonoBehaviour
 
         float targetY = ultimoBloque.position.y + verticalOffset;
 
+        // Solo mover si el bloque supera el umbral
         if (targetY > transform.position.y)
         {
-            Vector3 destino = new Vector3(transform.position.x, targetY, transform.position.z);
-            Vector3 suavizado = Vector3.Lerp(transform.position, destino, smoothSpeed * Time.deltaTime);
-            transform.position = suavizado;
+            // Mover gradualmente hacia targetY con velocidad máxima
+            float nuevaY = Mathf.MoveTowards(
+                transform.position.y,
+                targetY,
+                velocidadMaxima * Time.deltaTime
+            );
 
-            minY = suavizado.y;
+            transform.position = new Vector3(
+                transform.position.x,
+                nuevaY,
+                transform.position.z
+            );
         }
     }
 

@@ -1,29 +1,41 @@
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class FondoInfinito : MonoBehaviour
 {
     public float alturaFondo = 17.5f;
-    public UnityEngine.Transform camara;
-
-
+    public Transform camara;
     private bool fondoInstanciado = false;
+
+    void Start()
+    {
+        // Asignar cámara automáticamente si no está asignada
+        if (camara == null)
+            camara = Camera.main.transform;
+    }
 
     void Update()
     {
-        
-        if (camara.position.y >= transform.position.y && !fondoInstanciado)
+        if (camara == null) return; // Protección contra errores
+
+        // Crear nuevo fondo ANTES de que la cámara llegue al borde
+        float margenAnticipacion = 5f; // Crear el fondo 5 unidades antes
+        if (camara.position.y + margenAnticipacion >= transform.position.y + alturaFondo && !fondoInstanciado)
         {
-            Vector3 nuevaPos = new Vector3(transform.position.x, transform.position.y + alturaFondo, transform.position.z);
+            // Crear clon en posición exacta para evitar huecos
+            Vector3 nuevaPos = new Vector3(
+                transform.position.x,
+                transform.position.y + alturaFondo,
+                transform.position.z
+            );
+
             GameObject nuevoFondo = Instantiate(gameObject, nuevaPos, Quaternion.identity);
-            nuevoFondo.GetComponent<FondoInfinito>().camara = camara;
+
+            // Asegurar que el clon tiene la referencia a la cámara
+            FondoInfinito script = nuevoFondo.GetComponent<FondoInfinito>();
+            script.camara = camara;
+            script.fondoInstanciado = false; // Resetear para que el clon pueda crear su propio clon
 
             fondoInstanciado = true;
         }
-        if (camara.position.y - transform.position.y > alturaFondo * 2)
-        {
-            Destroy(gameObject);
-        }
     }
 }
-
