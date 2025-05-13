@@ -2,7 +2,7 @@
 
 public class ErrorVR : MonoBehaviour
 {
-    private string nextSceneName = "ErrorAR";
+    private string nextSceneName = "PreAR";
 
     public void GoToNextScene()
     {

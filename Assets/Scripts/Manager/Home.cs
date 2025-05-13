@@ -16,11 +16,13 @@ public class HomeController : MonoBehaviour
 
         int puntos1 = PlayerPrefs.GetInt("Puntos_Prueba1", 0);
         int puntos2 = PlayerPrefs.GetInt("Puntos_Prueba2", 0);
-        int total = puntos1 + puntos2;
+        int puntos3 = PlayerPrefs.GetInt("Puntos_Prueba3", 0);
+        int puntos4 = PlayerPrefs.GetInt("Puntos_Prueba4", 0);
+        int total = puntos1 + puntos2 + puntos3 + puntos4;
 
         if (puntosText != null)
         {
-            puntosText.text = $"Prueba I: {puntos1}\nPrueba II: {puntos2}\nTotal: {total}";
+            puntosText.text = $"Prueba I: {puntos1}\nPrueba II: {puntos2}\nPrueba III: {puntos3}\nPrueba IV: {puntos4}\nTotal: {total}";
         }
     }
 
