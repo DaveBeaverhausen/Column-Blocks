@@ -329,7 +329,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'prueba iv : Velocidad'
+  m_text: "prueba iv : Punter\xEDa"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce86a2e788a9ae9418f0c4b6042053ff, type: 2}
   m_sharedMaterial: {fileID: -3831542712007562248, guid: ce86a2e788a9ae9418f0c4b6042053ff, type: 2}
@@ -481,6 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddb92f4414be7b7479c2cea55b983735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 3
 --- !u!4 &1336713789
 Transform:
   m_ObjectHideFlags: 0
@@ -704,10 +705,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Durante un minuto y medio, deber\xE1s mover tu escudo para bloquear todas
-    las piedras que te lancen .\r\nCada vez que una piedra te golpee, perder\xE1s
-    una vida. Si te quedas sin vidas antes de que acabe el tiempo, la prueba termina.\r\nAguanta
-    hasta el final y demuestra que eres digno de la academia espartana."
+  m_text: "Durante un minuto y medio, lanza proyectiles tocando la pantalla y da
+    al escudo en movimiento.\r\nCada acierto, suma un punto. Cada fallo, rresta una
+    vida.\r\nSi te quedas sin vidas antes de que acabe el tiempo, la prueba termina.\r\n\xA1Apunta
+    bien, mant\xE9n la concentraci\xF3n y demuestra que eres digno de la academia
+    espartana!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 63a7091dd188c4f4f887b7b26ec80802, type: 2}
   m_sharedMaterial: {fileID: 1919846636335012938, guid: 63a7091dd188c4f4f887b7b26ec80802, type: 2}

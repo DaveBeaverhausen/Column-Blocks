@@ -3,43 +3,82 @@ using System.Collections;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject projectilePrefab;
-    public Transform[] spawnPoints;
-    public float initialSpawnRate = 1.5f; // tiempo inicial entre proyectiles (segundos)
-    public float minSpawnRate = 0.3f;     // tiempo mínimo entre proyectiles
-    public float acceleration = 0.02f;    // cuánto se reduce el spawnRate cada vez
+    public GameObject[] projectilePrefabs; // Piedra, lanza, espada
+    public Transform spawnPoint; // Punto central para que aparezcan los proyectiles
+    public Transform shieldTransform; // Escudo objetivo
+    public float initialSpawnDelay = 1.5f;
+    public float minSpawnDelay = 0.3f;
+    public float speedIncrease = 0.05f;
 
-    private float spawnRate;
-    private bool spawning = true;
+    private float currentSpawnDelay;
+    private bool isSpawning = true;
+    private bool projectileActive = false; // Controla si hay un proyectil activo
 
     void Start()
     {
-        spawnRate = initialSpawnRate;
-        StartCoroutine(SpawnProjectiles());
+        currentSpawnDelay = initialSpawnDelay;
+        // Elimina cualquier proyectil existente al iniciar
+        foreach (GameObject projectile in GameObject.FindGameObjectsWithTag("Projectile"))
+        {
+            Destroy(projectile);
+        }
+        StartCoroutine(SpawnProjectilesRoutine());
     }
 
-    IEnumerator SpawnProjectiles()
+    IEnumerator SpawnProjectilesRoutine()
     {
-        while (spawning)
+        while (isSpawning)
         {
-            SpawnProjectile();
-            yield return new WaitForSeconds(spawnRate);
-            // Acelera el ritmo de spawn hasta el mínimo permitido
-            if (spawnRate > minSpawnRate)
-                spawnRate -= acceleration;
+            // Solo genera un nuevo proyectil si no hay uno activo
+            if (!projectileActive)
+            {
+                SpawnProjectile();
+            }
+            yield return new WaitForSeconds(0.5f); // Comprueba periódicamente
         }
     }
 
     void SpawnProjectile()
     {
-        int randomIndex = Random.Range(0, spawnPoints.Length);
-        Instantiate(projectilePrefab,
-                   spawnPoints[randomIndex].position,
-                   Quaternion.LookRotation(Vector3.down));
+        // Elegir UN tipo de proyectil aleatorio (no todos a la vez)
+        int prefabIndex = Random.Range(0, projectilePrefabs.Length);
+        GameObject prefab = projectilePrefabs[prefabIndex];
+
+        // Posición central para apuntar
+        Vector3 spawnPos = spawnPoint.position;
+
+        // El proyectil aparece pero NO se mueve automáticamente
+        GameObject projectile = Instantiate(
+            prefab,
+            spawnPos,
+            Quaternion.identity
+        );
+
+        // Añadir una referencia al SpawnManager
+        Projectile projectileScript = projectile.GetComponent<Projectile>();
+        if (projectileScript != null)
+        {
+            projectileScript.spawnManager = this;
+            // NO inicializar la dirección ni velocidad aquí
+        }
+
+        projectileActive = true;
+    }
+
+    public void IncreaseDifficulty(float amount)
+    {
+        // Reduce el tiempo de espera para aumentar la dificultad
+        currentSpawnDelay = Mathf.Max(currentSpawnDelay - amount, minSpawnDelay);
+    }
+
+    // Llamado cuando un proyectil se destruye
+    public void ProjectileDestroyed()
+    {
+        projectileActive = false;
     }
 
     public void StopSpawning()
     {
-        spawning = false;
+        isSpawning = false;
     }
 }

@@ -7,6 +7,9 @@ TagManager:
   - Bloque
   - Plataforma
   - ZonaEsquivar
+  - Projectile
+  - Shield
+  - ScoreZone
   layers:
   - Default
   - TransparentFX
