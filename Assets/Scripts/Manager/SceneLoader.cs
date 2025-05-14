@@ -7,30 +7,20 @@ public class SceneLoader : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
+        // Implementación correcta del patrón Singleton
+        if (Instance == null)
         {
-            Destroy(this.gameObject);
-            return;
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Importante - mantiene el objeto entre escenas
         }
-
-        Instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void LoadScene(string sceneName)
     {
-        Debug.Log($"Cambiando a escena: {sceneName}");
-
-        string escenaActual = SceneManager.GetActiveScene().name;
-
-        if (escenaActual == sceneName)
-        {
-            Debug.Log("Escena actual es la misma que se intenta cargar. Forzando recarga.");
-            SceneManager.LoadScene(sceneName); 
-        }
-        else
-        {
-            SceneManager.LoadScene(sceneName);
-        }
-    }   
+        SceneManager.LoadScene(sceneName);
+    }
 }

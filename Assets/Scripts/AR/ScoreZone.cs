@@ -6,8 +6,13 @@ public class ScoreZone : MonoBehaviour
     {
         if (other.CompareTag("Projectile"))
         {
-            // Proyectil esquivado (pasó sin golpear el escudo)
-            GameManager.Instance.AddPoint();
+            // Solo notifica al SpawnManager y destruye el proyectil
+            Projectile projectile = other.GetComponent<Projectile>();
+            if (projectile != null && projectile.spawnManager != null)
+            {
+                projectile.spawnManager.ProjectileDestroyed();
+            }
+
             Destroy(other.gameObject);
         }
     }

@@ -5,6 +5,13 @@ public class GameOverController : MonoBehaviour
 {
     public void IrAFinalScene()
     {
-        SceneManager.LoadScene("Final Scene");
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("FinalScene");
+    }
+
+    public void VolverASelectorJuegos()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("GameSelector");
     }
 }

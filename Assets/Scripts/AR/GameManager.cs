@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public TMP_Text scoreText;
     public GameObject gameOverPanel;
 
+    [Header("Game Over")]
+    public TMP_Text gameOverScoreText;
+
     void Awake() => Instance = this;
 
     void Start()
@@ -42,37 +45,36 @@ public class GameManager : MonoBehaviour
 
     public void TakeDamage()
     {
-        lives--;
-        livesText.text = $"Vidas: {lives}";
+        if (lives <= 0) return;
 
-        // Aumenta la velocidad del escudo al perder una vida
-        ShieldController shieldController = FindFirstObjectByType<ShieldController>();
-        if (shieldController != null)
-        {
-            shieldController.IncreaseSpeed(0.5f); // Aumenta el multiplicador en 0.5
-        }
+        // Resta 1 vida
+        lives--;
+        lives = Mathf.Max(lives, 0);
+        livesText.text = $"Vidas: {lives}";
 
         if (lives <= 0) GameOver();
     }
 
     void WinGame()
     {
-        EndGame(); // Usa el método común para finalizar
-        PlayerPrefs.SetInt("Puntos_Prueba3", score); // Guarda solo en victoria
-        PlayerPrefs.Save();
+        EndGame();
     }
 
     void GameOver()
     {
-        EndGame(); // Usa el mismo método para derrota
+        EndGame();
     }
 
     void EndGame()
     {
-        // Detiene el juego y muestra el panel
         FindFirstObjectByType<SpawnManager>().StopSpawning();
         gameOverPanel.SetActive(true);
-        scoreText.text = $"MARCA: {score}";
-        Time.timeScale = 0f; // Pausa el juego (opcional)
+        gameOverScoreText.text = $"MARCA: {score}";
+
+        // Guarda los puntos siempre al finalizar (victoria o derrota)
+        PlayerPrefs.SetInt("Puntos_Prueba4", score);
+        PlayerPrefs.Save();
+
+        Time.timeScale = 0f;
     }
 }

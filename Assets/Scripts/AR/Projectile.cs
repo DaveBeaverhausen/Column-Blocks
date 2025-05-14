@@ -2,71 +2,76 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float speed = 15f;
+    public float speed = 30f;
     public SpawnManager spawnManager;
-
+    private Transform shieldTransform;
     private bool isLaunched = false;
     private Vector3 direction;
+    private bool hasCollided = false;
+
+    public void Initialize(SpawnManager manager, Transform shield)
+    {
+        spawnManager = manager;
+        shieldTransform = shield;
+        gameObject.SetActive(true); // Activa el proyectil cuando está listo
+    }
 
     void Update()
     {
-        // Si el proyectil ya fue lanzado, moverlo
-        if (isLaunched)
+        if (!isLaunched)
+        {
+            HandleTouchInput();
+        }
+        else
         {
             transform.position += direction * speed * Time.deltaTime;
         }
-        // Si no está lanzado, verificar interacción
-        else if (Input.touchCount > 0)
+    }
+
+    void HandleTouchInput()
+    {
+        if (Input.touchCount > 0 && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
             Touch touch = Input.GetTouch(0);
 
-            // Comprobar si el toque comenzó en este frame (para lanzar solo una vez)
             if (touch.phase == TouchPhase.Began)
             {
-                // Raycast para ver si tocó este proyectil
-                Ray ray = Camera.main.ScreenPointToRay(touch.position);
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit) && hit.collider.gameObject == gameObject)
-                {
-                    LaunchProjectile();
-                }
+                LaunchProjectile();
             }
         }
     }
 
-    public void LaunchProjectile()
+    void LaunchProjectile()
     {
-        // Calcula dirección hacia el escudo
-        Vector3 targetPos = GameObject.FindGameObjectWithTag("Shield").transform.position;
-        direction = (targetPos - transform.position).normalized;
+        if (shieldTransform == null) return;
 
-        // Orienta el proyectil hacia el objetivo
+        // Calcula dirección hacia la posición ACTUAL del escudo
+        direction = (shieldTransform.position - transform.position).normalized;
         transform.rotation = Quaternion.LookRotation(direction);
-
-        // Marca como lanzado
         isLaunched = true;
     }
 
     void OnTriggerEnter(Collider other)
     {
+        if (hasCollided) return; // Evita múltiples colisiones
+
         if (other.CompareTag("Shield"))
         {
             GameManager.Instance.AddPoint();
             DestroyProjectile();
         }
-        else if (other.CompareTag("Player"))
+        else if (other.CompareTag("ScoreZone"))
         {
             GameManager.Instance.TakeDamage();
             DestroyProjectile();
         }
+
+        hasCollided = true; // Marca como colisionado
     }
 
     void DestroyProjectile()
     {
-        if (spawnManager != null)
-            spawnManager.ProjectileDestroyed();
-
+        spawnManager?.ProjectileDestroyed();
         Destroy(gameObject);
     }
 }

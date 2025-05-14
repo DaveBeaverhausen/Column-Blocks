@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ErrorVR : MonoBehaviour
+public class PreVR : MonoBehaviour
 {
     private string nextSceneName = "PreAR";
 
@@ -16,5 +16,3 @@ public class ErrorVR : MonoBehaviour
         }
     }
 }
-
-

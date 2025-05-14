@@ -167,8 +167,23 @@ public class ScriptJuego : MonoBehaviour
         textoTiempo.text = $"TIEMPO\n{minutos:00}:{segundos:00}";
     }
 
-    public void IrASiguientePantalla()
+    public void IrASiguienteEscena()
     {
-        SceneManager.LoadScene(nextSceneName);
+        Time.timeScale = 1;
+
+        if (SceneLoader.Instance != null)
+        {
+            SceneLoader.Instance.LoadScene(nextSceneName);
+        }
+        else
+        {
+            Debug.LogError("SceneLoader.Instance no encontrado.");
+        }
+    }
+
+    public void VolverASelectorJuegos()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("GameSelector");
     }
 }

@@ -4,12 +4,12 @@ using System.Collections;
 public class PreObjects : MonoBehaviour
 {
     [Header("Configuración")]
-    public float waitTime = 3f;                  
-    public string nextScene = "Objects";       
+    public float waitTime = 3f;
+    public string nextScene = "Objects";
 
     void Start()
     {
-        Time.timeScale = 1f; 
+        Time.timeScale = 1f;
         Debug.Log("PreObjects: esperando " + waitTime + " segundos...");
 
         StartCoroutine(CambiarDeEscenaConDelay());

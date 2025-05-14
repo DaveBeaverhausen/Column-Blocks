@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/ColumnsBlocks.unity
     guid: bacaa469ac0613b419bcb0a70970f8ec
   - enabled: 1
-    path: Assets/Scenes/ErrorVR.unity
+    path: Assets/Scenes/PreVR.unity
     guid: 870123fcbecbd3942ae78fbcdfb032a1
   - enabled: 1
     path: Assets/Scenes/ARVelocidad.unity

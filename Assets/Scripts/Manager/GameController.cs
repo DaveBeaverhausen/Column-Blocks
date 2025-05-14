@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
     public float tiempoRestante = 90f;
     private int puntuacion = 0;
     public bool juegoTerminado = false;
-    private bool bloqueEsperandoAsentarse = false; 
+    private bool bloqueEsperandoAsentarse = false;
 
     [Header("Transición al finalizar el tiempo")]
     public string nextSceneName = "ErrorVR"; // Nombre de la escena a la que cambiar cuando se acabe el tiempo
@@ -84,7 +84,7 @@ public class GameController : MonoBehaviour
             }
             else
             {
-                textoTiempo.color = Color.black; 
+                textoTiempo.color = Color.black;
             }
         }
 
@@ -145,7 +145,7 @@ public class GameController : MonoBehaviour
         gameOverPanel.SetActive(true);
         AudioManager.Instance.ReproducirSonidoGameOver();
         Time.timeScale = 0f;
-        
+
         StartCoroutine(CargarEscenaFinal());
     }
 
@@ -175,4 +175,9 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void VolverASelectorJuegos()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("GameSelector");
+    }
 }
