@@ -39,9 +39,11 @@ EditorBuildSettings:
     path: Assets/Scenes/FinalScene.unity
     guid: 9018cfc7a59d9d34ab659a434d191a20
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4ded5ebeeb09f92cb9d8df67e5b8b2ed, type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 7ee7ad19f9370dc499d4849252e7cc21, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 060831c2e739c8340ad67ba6c03edeb6, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 2408b4ab349cc4b44bc6f62d0d3c385a, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8fde9fbbc1308ba4e815017583f8074b, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 9b13c5985d2852963ac09687eb6c1de4, type: 2}
   m_UseUCBPForAssetBundles: 0
