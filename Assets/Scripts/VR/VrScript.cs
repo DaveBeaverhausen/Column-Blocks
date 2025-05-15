@@ -4,50 +4,48 @@ using UnityEngine.SceneManagement;
 
 public class VrScript : MonoBehaviour
 {
-    public TextMeshProUGUI[] puntosTexts;
-    public TextMeshProUGUI[] tiempoTexts;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timeText;
     public float totalTime = 90f;
-
-    private float tiempoActual;
-    private int puntos = 0;
+    private float currentTime;
+    private int score;
 
     void Start()
     {
-        tiempoActual = totalTime;
-        ActualizarMarcadores();
+        currentTime = totalTime;
+        UpdateUI();
     }
 
     void Update()
     {
-        tiempoActual -= Time.deltaTime;
-        ActualizarMarcadores();
-
-        if (tiempoActual <= 0)
+        currentTime -= Time.deltaTime;
+        if (currentTime <= 0f)
         {
-            tiempoActual = 0;
-            GuardarPuntosYVolver();
+            currentTime = 0f;
+            FinalizarJuego();
         }
+
+        UpdateUI();
+    }
+
+    void UpdateUI()
+    {
+        if (scoreText != null)
+            scoreText.text = "Score: " + score;
+
+        if (timeText != null)
+            timeText.text = "Time: " + Mathf.CeilToInt(currentTime);
     }
 
     public void SumarPunto()
     {
-        puntos++;
-        ActualizarMarcadores();
+        score++;
+        PlayerPrefs.SetInt("Puntos_Prueba3", score); // Guardar para HomeController
+        UpdateUI();
     }
 
-    void ActualizarMarcadores()
+    void FinalizarJuego()
     {
-        foreach (var texto in puntosTexts)
-            texto.text = $"Score: {puntos}";
-
-        foreach (var texto in tiempoTexts)
-            texto.text = $"Time: {Mathf.CeilToInt(tiempoActual)}";
-    }
-
-    void GuardarPuntosYVolver()
-    {
-        PlayerPrefs.SetInt("Puntos_Prueba3", puntos);
-        PlayerPrefs.Save();
-        SceneManager.LoadScene("Home"); // Asegúrate de que el nombre sea correcto
+        SceneManager.LoadScene("HomeScene"); // Cambia por el nombre real de tu escena Home
     }
 }

@@ -81,6 +81,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f26889802d6631f498b354a96a60d1d9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7390033043647480099}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f26889802d6631f498b354a96a60d1d9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3643383586907404828}
   m_SourcePrefab: {fileID: 100100000, guid: f26889802d6631f498b354a96a60d1d9, type: 3}
 --- !u!1 &2460382028000259446 stripped
 GameObject:
@@ -136,6 +139,19 @@ Rigidbody:
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &7390033043647480099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2460382028000259446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e36273fabfeee6d1281bb8c2317ef657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frutaPartidaPrefab: {fileID: 988585649098114059, guid: a03b8f31ccd8685429de445e46a440a1, type: 3}
+--- !u!114 &3643383586907404828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
