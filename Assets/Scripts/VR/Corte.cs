@@ -1,5 +1,3 @@
-
-
 using UnityEngine;
 
 public class Corte : MonoBehaviour
@@ -10,10 +8,16 @@ public class Corte : MonoBehaviour
     {
         if (other.CompareTag("Espada"))
         {
-            
+
             Instantiate(frutaPartidaPrefab, transform.position, transform.rotation);
 
-           
+
+            VrScript vrManager = FindObjectOfType<VrScript>();
+            if (vrManager != null)
+            {
+                vrManager.SumarPunto();
+            }
+
             Destroy(gameObject);
         }
     }
