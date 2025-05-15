@@ -27,14 +27,17 @@ EditorBuildSettings:
     path: Assets/Scenes/ColumnsBlocks.unity
     guid: bacaa469ac0613b419bcb0a70970f8ec
   - enabled: 1
-    path: Assets/Scenes/PreVR.unity
-    guid: 870123fcbecbd3942ae78fbcdfb032a1
+    path: Assets/Scenes/PreAR.unity
+    guid: 37d1e3994e955134c93e996214f03426
   - enabled: 1
     path: Assets/Scenes/ARVelocidad.unity
     guid: 170e6f09dec385a458d425fff4d0dd9a
   - enabled: 1
-    path: Assets/Scenes/PreAR.unity
-    guid: 37d1e3994e955134c93e996214f03426
+    path: Assets/Scenes/PreVR.unity
+    guid: 870123fcbecbd3942ae78fbcdfb032a1
+  - enabled: 1
+    path: Assets/Scenes/FruitVR.unity
+    guid: 5d62dd5fb706a7e4fb01bd2e422ef3ef
   - enabled: 1
     path: Assets/Scenes/FinalScene.unity
     guid: 9018cfc7a59d9d34ab659a434d191a20

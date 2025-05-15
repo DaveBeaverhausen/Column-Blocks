@@ -34,7 +34,7 @@ public class VrScript : MonoBehaviour
         if (tiempoActual <= 0)
         {
             tiempoActual = 0;
-            FinalizarJuego();
+            FinalizarJuego1();
         }
     }
 
@@ -82,8 +82,23 @@ public class VrScript : MonoBehaviour
         
     }
 
+    void FinalizarJuego1()
+    {
+        juegoActivo = false;
+        PlayerPrefs.SetInt("Puntos_Prueba3", puntos);
+        PlayerPrefs.Save();
+
+          PantallaFinal();
+        
+    }
+
     void CargarMenu()
     {
         SceneManager.LoadScene("Home");
+    }
+
+    void PantallaFinal()
+    {
+        SceneManager.LoadScene("FinalScene");
     }
 }

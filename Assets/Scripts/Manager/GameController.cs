@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
     private bool bloqueEsperandoAsentarse = false;
 
     [Header("Transición al finalizar el tiempo")]
-    public string nextSceneName = "ErrorVR"; // Nombre de la escena a la que cambiar cuando se acabe el tiempo
+    public string nextSceneName = "PreAR"; 
 
     public CameraFollow cameraFollow;
     public Gancho ganchoScript;

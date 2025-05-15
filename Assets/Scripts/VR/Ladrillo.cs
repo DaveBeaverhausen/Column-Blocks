@@ -25,7 +25,8 @@ public class Ladrillo : MonoBehaviour
         Rigidbody rb = ladrillo.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.linearVelocity = new Vector3(0, -fallSpeed, 0);
+            rb.linearVelocity = new Vector3(0, -fallSpeed, 0); 
+
         }
     }
 }

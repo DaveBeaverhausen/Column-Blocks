@@ -329,7 +329,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "prueba iv : Punter\xEDa"
+  m_text: "prueba III : Punter\xEDa"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce86a2e788a9ae9418f0c4b6042053ff, type: 2}
   m_sharedMaterial: {fileID: -3831542712007562248, guid: ce86a2e788a9ae9418f0c4b6042053ff, type: 2}
@@ -531,7 +531,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000030517578}
+  m_AnchoredPosition: {x: 0, y: -0.000061035156}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1501917769
