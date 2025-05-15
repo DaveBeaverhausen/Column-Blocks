@@ -10,6 +10,7 @@ TagManager:
   - Projectile
   - Shield
   - ScoreZone
+  - Espada
   layers:
   - Default
   - TransparentFX
