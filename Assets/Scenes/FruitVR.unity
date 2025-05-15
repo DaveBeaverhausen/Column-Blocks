@@ -587,6 +587,8 @@ MonoBehaviour:
   - {fileID: 1539156879}
   - {fileID: 1387316496}
   totalTime: 90
+  golpesMaximos: 5
+  mensajeFinal: {fileID: 0}
 --- !u!1 &349103324 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8cf8de23d7d3ea34aba8f8c913708d7d, type: 3}
@@ -1258,6 +1260,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: -90, z: 0}
+--- !u!1 &986525739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 986525741}
+  - component: {fileID: 986525740}
+  m_Layer: 0
+  m_Name: Ladrillo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &986525740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986525739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38bf13e09475570f0a3ef69739c0b176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ladrilloPrefab: {fileID: 157732, guid: 607de841ee73a2f438b88121ff782aab, type: 3}
+  spawnInterval: 3
+  xRange: 5
+  zRange: 5
+  fallSpeed: 10
+--- !u!4 &986525741
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986525739}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 35, y: 24, z: 21}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &993291118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,7 +1324,7 @@ GameObject:
   - component: {fileID: 993291120}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: Jugador
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3229,12 +3280,12 @@ MonoBehaviour:
   fruitPrefabs:
   - {fileID: 2460382028000259446, guid: 86714b1306bfd2f4dbf3e7a122354da4, type: 3}
   - {fileID: 6656866487168472820, guid: aa703e2633364ee45a0051ea41268c19, type: 3}
-  - {fileID: 7646253236011187870, guid: 2be54332cf766204593f63b45f8790e3, type: 3}
   - {fileID: 6484588811153927113, guid: 15e702f79773c7744b06c4c90b86438f, type: 3}
-  spawnInterval: 1.5
-  xRange: 2
-  zRange: 2
-  fallSpeed: 2
+  - {fileID: 7646253236011187870, guid: 2be54332cf766204593f63b45f8790e3, type: 3}
+  spawnInterval: 2
+  xRange: 1
+  zRange: 1
+  fallSpeed: 10
 --- !u!4 &1961357830
 Transform:
   m_ObjectHideFlags: 0
@@ -3374,7 +3425,8 @@ SceneRoots:
   - {fileID: 1617383459}
   - {fileID: 510256007}
   - {fileID: 855861573}
-  - {fileID: 1961357830}
   - {fileID: 314654464}
   - {fileID: 1615793588}
   - {fileID: 614975064}
+  - {fileID: 986525741}
+  - {fileID: 1961357830}

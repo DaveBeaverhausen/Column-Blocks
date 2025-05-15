@@ -6,8 +6,7 @@ public class CaidaFruta : MonoBehaviour
     public float spawnInterval = 2f;       
     public float xRange = 5f;   
     public float zRange = 5f;
-    public float fallSpeed = 1f; // ⬅️ AÑADIDA
-
+    public float fallSpeed = 3f; 
     void Start()
     {
         InvokeRepeating(nameof(Caida), 3f, spawnInterval);
@@ -28,7 +27,7 @@ public class CaidaFruta : MonoBehaviour
         Rigidbody rb = fruta.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.linearVelocity = new Vector3(0, -fallSpeed, 0); // ⬅️ SOLO UNA FRUTA
+            rb.linearVelocity = new Vector3(0, -fallSpeed, 0);
         }
     }
 }
