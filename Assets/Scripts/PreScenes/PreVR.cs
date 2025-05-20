@@ -1,18 +1,32 @@
 ﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class PreVR : MonoBehaviour
 {
-    public float tiempoEspera = 5f; 
-    public string siguienteEscena = "FruitVR";
+    public float waitTime = 5f; 
+    public string nextSceneName = "FruitVR";
 
     void Start()
     {
-        Invoke(nameof(CargarSiguienteEscena), tiempoEspera);
+        StartCoroutine(ChangeSceneAfterDelay());
     }
 
-    void CargarSiguienteEscena()
+    IEnumerator ChangeSceneAfterDelay()
     {
-        SceneManager.LoadScene(siguienteEscena);
+        yield return new WaitForSeconds(waitTime);
+        GoToNextScene();
+    }
+
+    public void GoToNextScene()
+    {
+        if (SceneLoader.Instance != null)
+        {
+            SceneLoader.Instance.LoadScene(nextSceneName);
+        }
+        else
+        {
+            Debug.LogError("SceneLoader.Instance no encontrado.");
+        }
     }
 }

@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 1139148904}
   - component: {fileID: 1139148903}
   m_Layer: 5
-  m_Name: Prueba3
+  m_Name: Prueba4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "prueba III : Punter\xEDa"
+  m_text: "prueba IV: Punter\xEDa"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce86a2e788a9ae9418f0c4b6042053ff, type: 2}
   m_sharedMaterial: {fileID: -3831542712007562248, guid: ce86a2e788a9ae9418f0c4b6042053ff, type: 2}
@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 1501917770}
   - component: {fileID: 1501917769}
   m_Layer: 5
-  m_Name: FondoPrueba3
+  m_Name: FondoPrueba4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 1944839581}
   - component: {fileID: 1944839580}
   m_Layer: 5
-  m_Name: NormasPrueba3
+  m_Name: NormasPrueba4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

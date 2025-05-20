@@ -176,8 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea4ab749b893267bb45c752539cc109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiempoEspera: 5
-  siguienteEscena: FruitVR
+  waitTime: 5
+  nextSceneName: FruitVR
 --- !u!1 &971845785
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -35.38, y: 115}
+  m_AnchoredPosition: {x: -35.38, y: 271}
   m_SizeDelta: {x: 1620.19, y: 32.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1139148903
@@ -388,7 +388,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'prueba iv : destreza'
+  m_text: 'prueba  III: destreza'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce86a2e788a9ae9418f0c4b6042053ff, type: 2}
   m_sharedMaterial: {fileID: -3831542712007562248, guid: ce86a2e788a9ae9418f0c4b6042053ff, type: 2}
@@ -397,8 +397,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278231776
-  m_fontColor: {r: 0.8773585, g: 0.6336235, b: 0, a: 1}
+    rgba: 4278199603
+  m_fontColor: {r: 0.1981132, g: 0.14408232, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -520,7 +520,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1336713789}
-  - component: {fileID: 1336713788}
+  - component: {fileID: 1336713790}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -528,19 +528,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1336713788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1336713787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddb92f4414be7b7479c2cea55b983735, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waitTime: 3
 --- !u!4 &1336713789
 Transform:
   m_ObjectHideFlags: 0
@@ -556,6 +543,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1336713790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336713787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea4ab749b893267bb45c752539cc109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitTime: 5
+  nextSceneName: FruitVR
 --- !u!1 &1501917767
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,7 +742,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -35.38, y: -174.34}
+  m_AnchoredPosition: {x: -35.38, y: -45}
   m_SizeDelta: {x: 1620.2, y: 304.67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1944839580
@@ -768,7 +769,7 @@ MonoBehaviour:
     dentro de la academ\xEDa.\n\nCada corte de fruta te sumar\xE1 un punto. Pero
     vigila, tambi\xE9n caer\xE1n piedras. Cada golpe de luna piedra te restar\xE1
     una vida. Si te da 5 veces perder\xE1s la prueba. A la vez un golpe te restar\xE1
-    un punto.\r\n\r\n\r\n\xA1Concentrate, ponte las gafas  y demuestra que eres digno
+    un punto.\r\n\r\n\xA1Concentrate, ponte las gafas  y demuestra que eres digno
     de la academia espartana!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 63a7091dd188c4f4f887b7b26ec80802, type: 2}
