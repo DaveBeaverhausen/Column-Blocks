@@ -26,6 +26,7 @@ public class PreColumns : MonoBehaviour
         else
         {
             Debug.LogError("SceneLoader.Instance no encontrado.");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneName);
         }
     }
 }

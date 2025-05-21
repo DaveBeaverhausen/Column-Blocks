@@ -30,11 +30,18 @@ public class GameManager : MonoBehaviour
         if (gameTime > 0)
         {
             gameTime -= Time.deltaTime;
-            int minutes = Mathf.FloorToInt(gameTime / 60f);
-            int seconds = Mathf.FloorToInt(gameTime % 60f);
-            timerText.text = $"Tiempo\n {minutes:00}:{seconds:00}";
-            if (gameTime <= 0) WinGame();
+            if (gameTime <= 0)
+            {
+                gameTime = 0; // Fuerza a cero
+                WinGame();
+            }
         }
+
+        int minutes = Mathf.FloorToInt(gameTime / 60f);
+        int seconds = Mathf.FloorToInt(gameTime % 60f);
+        if (minutes < 0) minutes = 0;
+        if (seconds < 0) seconds = 0;
+        timerText.text = $"Tiempo\n {minutes:00}:{seconds:00}";
     }
 
     public void AddPoint()

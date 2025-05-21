@@ -29,4 +29,9 @@ public class Ladrillo : MonoBehaviour
 
         }
     }
+
+    public void PararGeneracion()
+    {
+        CancelInvoke(nameof(SoltarLadrillo));
+    }
 }

@@ -41,7 +41,7 @@ public class VrScript : MonoBehaviour
         if (tiempoActual <= 0)
         {
             tiempoActual = 0;
-            FinalizarJuego1();
+            FinalizarJuego();
         }
     }
 
@@ -81,36 +81,39 @@ public class VrScript : MonoBehaviour
 
     void FinalizarJuego()
     {
+        if (!juegoActivo) return;
         juegoActivo = false;
 
+        // Detener generación de frutas y ladrillos
+        foreach (CaidaFruta cf in FindObjectsOfType<CaidaFruta>())
+            cf.PararGeneracion();
+        foreach (Ladrillo l in FindObjectsOfType<Ladrillo>())
+            l.PararGeneracion();
+
         // Mostrar Game Over y guardar puntos
-        gameOverPanel.SetActive(true);
-        gameOverScoreText.text = $"PUNTOS: {puntos}";
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(true);
+        if (gameOverScoreText != null)
+            gameOverScoreText.text = $"MARCA: {puntos}";
         PlayerPrefs.SetInt("Puntos_Prueba3", puntos);
         PlayerPrefs.Save();
 
-        Time.timeScale = 0f; // Pausar el juego
-        StartCoroutine(CargarEscenaFinal());
+        Transform textoFin = gameOverPanel.transform.Find("TextoFin");
+        if (textoFin != null)
+            textoFin.gameObject.SetActive(true);
+
+        Time.timeScale = 0f;
     }
 
-    void FinalizarJuego1()
+    public void VolverASelectorJuegos()
     {
-        juegoActivo = false;
-
-        // Mostrar Game Over y guardar puntos
-        gameOverPanel.SetActive(true);
-        gameOverScoreText.text = $"PUNTOS: {puntos}";
-        PlayerPrefs.SetInt("Puntos_Prueba3", puntos);
-        PlayerPrefs.Save();
-
-        Time.timeScale = 0f; // Pausar el juego
-        StartCoroutine(CargarEscenaFinal());
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("GameSelector");
     }
 
-    IEnumerator CargarEscenaFinal()
+    public void IrASiguienteEscena()
     {
-        yield return new WaitForSecondsRealtime(2f); // Esperar 2 segundos (tiempo real aunque el juego esté pausado)
-        Time.timeScale = 1f; // Reanudar el tiempo
-        SceneManager.LoadScene("GameOverVR"); // Cambiar a tu escena final de VR
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("PreAR");
     }
 }

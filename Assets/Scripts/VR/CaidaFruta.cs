@@ -30,4 +30,9 @@ public class CaidaFruta : MonoBehaviour
             rb.linearVelocity = new Vector3(0, -fallSpeed, 0);
         }
     }
+
+    public void PararGeneracion()
+    {
+        CancelInvoke(nameof(Caida));
+    }
 }

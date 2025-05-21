@@ -25,7 +25,8 @@ public class PreAR : MonoBehaviour
         }
         else
         {
-            Debug.LogError("SceneLoader.Instance no encontrado.");
+            Debug.LogWarning("SceneLoader.Instance no encontrado, usando SceneManager directamente");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneName);
         }
     }
 }

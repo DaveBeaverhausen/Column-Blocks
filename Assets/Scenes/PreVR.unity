@@ -765,10 +765,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Durante un minuto y medio, te someter\xE1s en un entrenamiento en de destreza
+  m_text: "Durante un minuto y medio, te someter\xE1s a un entrenamiento de destreza
     dentro de la academ\xEDa.\n\nCada corte de fruta te sumar\xE1 un punto. Pero
-    vigila, tambi\xE9n caer\xE1n piedras. Cada golpe de luna piedra te restar\xE1
-    una vida. Si te da 5 veces perder\xE1s la prueba. A la vez un golpe te restar\xE1
+    vigila, tambi\xE9n caer\xE1n piedras. Cada golpe de una piedra te restar\xE1
+    una vida. Si te dan 5 veces perder\xE1s la prueba. A su vez, un golpe te restar\xE1
     un punto.\r\n\r\n\xA1Concentrate, ponte las gafas  y demuestra que eres digno
     de la academia espartana!"
   m_isRightToLeft: 0

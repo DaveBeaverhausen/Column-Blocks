@@ -27,6 +27,7 @@ public class PreVR : MonoBehaviour
         else
         {
             Debug.LogError("SceneLoader.Instance no encontrado.");
+            SceneManager.LoadScene(nextSceneName);
         }
     }
 }

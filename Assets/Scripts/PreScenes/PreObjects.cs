@@ -27,6 +27,7 @@ public class PreObjects : MonoBehaviour
         else
         {
             Debug.LogError("SceneLoader.Instance no encontrado.");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
         }
     }
 }
