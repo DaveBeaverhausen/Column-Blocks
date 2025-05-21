@@ -4,7 +4,7 @@ using System.Collections;
 public class PreObjects : MonoBehaviour
 {
     [Header("Configuración")]
-    public float waitTime = 3f;
+    public float waitTime = 8f;
     public string nextScene = "Objects";
 
     void Start()

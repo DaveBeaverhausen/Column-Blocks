@@ -5,7 +5,6 @@ public class Golpe : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
      
-
         if (other.CompareTag("Espada"))
         {
             

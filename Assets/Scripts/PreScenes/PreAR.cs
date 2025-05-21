@@ -4,7 +4,7 @@ using System.Collections;
 public class PreAR : MonoBehaviour
 {
     private string nextSceneName = "ARVelocidad";
-    public float waitTime = 3f;
+    public float waitTime = 8f;
 
     void Start()
     {

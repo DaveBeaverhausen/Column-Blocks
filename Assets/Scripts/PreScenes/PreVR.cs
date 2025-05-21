@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class PreVR : MonoBehaviour
 {
-    public float waitTime = 5f; 
+    public float waitTime = 8f; 
     public string nextSceneName = "FruitVR";
 
     void Start()
