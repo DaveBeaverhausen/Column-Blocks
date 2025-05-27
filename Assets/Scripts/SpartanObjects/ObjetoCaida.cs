@@ -3,7 +3,7 @@ using UnityEngine;
 public class ObjetoCaida : MonoBehaviour
 {
     public float velocidadBase = 2f;
-    public float multiplicadorValocidad = 2f;
+    public float multiplicadorVelocidad = 2f;
     public Marcador marcador;
 
     public ScriptJuego scriptJuego;
@@ -25,7 +25,7 @@ public class ObjetoCaida : MonoBehaviour
         
         if (scriptJuego == null || scriptJuego.juegoActivo)
         {
-            transform.Translate(Vector3.down * (velocidadBase * multiplicadorValocidad) * Time.deltaTime);
+            transform.Translate(Vector3.down * (velocidadBase * multiplicadorVelocidad) * Time.deltaTime);
         }
 
         if (transform.position.y < limiteBordeInferior) Destroy(gameObject);
