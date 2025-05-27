@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/PreAR.unity
     guid: 37d1e3994e955134c93e996214f03426
   - enabled: 0
-    path: Assets/Scenes/ARVelocidad.unity
+    path: Assets/Scenes/ARVelocidad1.unity
     guid: 170e6f09dec385a458d425fff4d0dd9a
   - enabled: 0
     path: Assets/Scenes/PreVR.unity
@@ -42,7 +42,7 @@ EditorBuildSettings:
     path: Assets/Scenes/FinalScene.unity
     guid: 9018cfc7a59d9d34ab659a434d191a20
   - enabled: 1
-    path: Assets/Scenes/BasicoAR.unity
+    path: Assets/Scenes/ARVelocidad.unity
     guid: 492c770309d67f246be7bb7ec4fa173a
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4ded5ebeeb09f92cb9d8df67e5b8b2ed, type: 2}
