@@ -4,7 +4,7 @@ public class ShieldController : MonoBehaviour
 {
     public float baseSpeed = 0.5f;     // Velocidad inicial
     public float maxSpeed = 5f;        // Velocidad máxima 
-    public float acceleration = 0.05f;  // Aceleración por segundo
+    public float acceleration = 0.02f;  // Aceleración por segundo
     public float moveDistance = 20f;    // Rango de movimiento
 
     private Vector3 startPosition;

@@ -706,7 +706,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Durante un minuto y medio, lanza proyectiles tocando la pantalla y da
-    al escudo en movimiento.\r\nCada acierto, suma un punto. Cada fallo, rresta una
+    al escudo en movimiento.\r\nCada acierto, suma un punto. Cada fallo, resta una
     vida.\r\nSi te quedas sin vidas antes de que acabe el tiempo, la prueba termina.\r\n\xA1Apunta
     bien, mant\xE9n la concentraci\xF3n y demuestra que eres digno de la academia
     espartana!"
