@@ -36,17 +36,35 @@ public class Projectile : MonoBehaviour
 
             if (touch.phase == TouchPhase.Began)
             {
-                LaunchProjectile();
+                LaunchProjectile(touch.position);
             }
         }
     }
 
-    void LaunchProjectile()
+    void LaunchProjectile(Vector2 touchPosition)
     {
         if (shieldTransform == null) return;
 
-        // Calcula dirección hacia la posición ACTUAL del escudo
-        direction = (shieldTransform.position - transform.position).normalized;
+        // Calcula el tercio de pantalla
+        float screenWidth = Screen.width;
+        float x = touchPosition.x;
+
+        if (x < screenWidth / 3f)
+        {
+            // Izquierda
+            direction = Quaternion.Euler(0, -30, 0) * Vector3.forward;
+        }
+        else if (x > 2f * screenWidth / 3f)
+        {
+            // Derecha
+            direction = Quaternion.Euler(0, 30, 0) * Vector3.forward;
+        }
+        else
+        {
+            // Centro
+            direction = Vector3.forward;
+        }
+
         transform.rotation = Quaternion.LookRotation(direction);
         isLaunched = true;
     }
