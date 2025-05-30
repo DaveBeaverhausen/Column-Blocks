@@ -190,8 +190,13 @@ MonoBehaviour:
       - rid: 7209398022539575526
       - rid: 7209398022539575527
       - rid: 7209398022539575528
+<<<<<<< HEAD
       - rid: 6926746725030821888
       - rid: 6926746725030821889
+=======
+      - rid: 6926746884734451811
+      - rid: 6926746884734451812
+>>>>>>> 6286868 (falta lluvia de objetos)
     m_RuntimeSettings:
       m_List: []
   renderingLayerNames:
@@ -223,12 +228,20 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+<<<<<<< HEAD
     - rid: 6926746725030821888
+=======
+    - rid: 6926746884734451811
+>>>>>>> 6286868 (falta lluvia de objetos)
       type: {class: LightmapSamplingSettings, ns: UnityEngine.Rendering, asm: Unity.RenderPipelines.Core.Runtime}
       data:
         m_Version: 1
         m_UseBicubicLightmapSampling: 0
+<<<<<<< HEAD
     - rid: 6926746725030821889
+=======
+    - rid: 6926746884734451812
+>>>>>>> 6286868 (falta lluvia de objetos)
       type: {class: VrsRenderPipelineRuntimeResources, ns: UnityEngine.Rendering, asm: Unity.RenderPipelines.Core.Runtime}
       data:
         m_TextureComputeShader: {fileID: 7200000, guid: cacb30de6c40c7444bbc78cb0a81fd2a, type: 3}
