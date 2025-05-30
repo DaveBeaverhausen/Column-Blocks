@@ -18,7 +18,7 @@ public class ObjectPooler : MonoBehaviour
         Instance = this;
     }
 
-    public List<Pool> pools; 
+    public List<Pool> pools; // << Esto debe ser público
     public Dictionary<string, Queue<GameObject>> poolDictionary;
 
     void Start()
@@ -33,7 +33,7 @@ public class ObjectPooler : MonoBehaviour
             {
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
-                obj.transform.parent = this.transform; 
+                obj.transform.parent = this.transform; // Opcional: organizar la jerarquía
                 objectPool.Enqueue(obj);
             }
 
@@ -59,5 +59,9 @@ public class ObjectPooler : MonoBehaviour
 
         return objectToSpawn;
     }
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> 26c66f3 (Integrado Object Pooler en los dos juegos2D)
